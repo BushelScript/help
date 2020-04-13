@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>4-2: Shells and Interpreters · BushelScript Help</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="_Not written yet._"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="4-2: Shells and Interpreters · BushelScript Help"/><meta property="og:type" content="website"/><meta property="og:url" content="https://bushelscript.github.io/help/"/><meta property="og:description" content="_Not written yet._"/><meta property="og:image" content="https://bushelscript.github.io/help/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://bushelscript.github.io/help/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/help/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/sunburst.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/help/js/scrollSpy.js"></script><link rel="stylesheet" href="/help/css/main.css"/><script src="/help/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/help/"><img class="logo" src="/help/img/favicon.ico" alt="BushelScript Help"/><h2 class="headerTitleWithLogo">BushelScript Help</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/help/docs/tutorial/" target="_self">Quick Tutorial</a></li><li class=""><a href="/help/docs/ref/" target="_self">Reference</a></li><li class=""><a href="/help/docs/integration/" target="_self">Integration</a></li><li class=""><a href="/help/docs/internal/" target="_self">Internals</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Section 4: External Interfacing</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Quick Tutorial</h3><ul class=""><li class="navListItem"><a class="navItem" href="/help/docs/tutorial/">Introduction</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Section 1: Basics</h4><ul><li class="navListItem"><a class="navItem" href="/help/docs/tutorial/user-interaction">Step 1: User Interaction</a></li><li class="navListItem"><a class="navItem" href="/help/docs/tutorial/basic-syntax">Step 2: Basic Syntax</a></li><li class="navListItem"><a class="navItem" href="/help/docs/tutorial/data-flow">Step 3: Data Flow</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Section 2: Terms and Dictionaries</h4><ul><li class="navListItem"><a class="navItem" href="/help/docs/tutorial/terms">Step 1: Terms</a></li><li class="navListItem"><a class="navItem" href="/help/docs/tutorial/dictionaries">Step 2: Dictionaries</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Section 3: Scripting Features</h4><ul><li class="navListItem"><a class="navItem" href="/help/docs/tutorial/specifiers">Step 1: Specifiers</a></li><li class="navListItem"><a class="navItem" href="/help/docs/tutorial/resources">Step 2: Resources</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Section 4: External Interfacing</h4><ul><li class="navListItem"><a class="navItem" href="/help/docs/tutorial/applescript">Step 1: Interfacing with AppleScript</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/help/docs/tutorial/shells-and-interpreters">Step 2: Shells and Interpreters</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Section 5: Basic Programming Features</h4><ul><li class="navListItem"><a class="navItem" href="/help/docs/tutorial/functions">Step 1: Functions</a></li><li class="navListItem"><a class="navItem" href="/help/docs/tutorial/control-flow">Step 2: Control Flow</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Appendices</h4><ul><li class="navListItem"><a class="navItem" href="/help/docs/tutorial/built-in-terms">A: Built-in Terms</a></li><li class="navListItem"><a class="navItem" href="/help/docs/tutorial/project">B: The BushelScript Project</a></li></ul></div></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">4-2: Shells and Interpreters</h1></header><article><div><span><p><em>Not written yet.</em></p>
+<p>See also: <a href="../ref/shells-and-interpreters">Language Reference</a>.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/help/docs/tutorial/applescript"><span class="arrow-prev">← </span><span class="function-name-prevnext">Step 1: Interfacing with AppleScript</span></a><a class="docs-next button" href="/help/docs/tutorial/functions"><span>Step 1: Functions</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2020 Ian Gregory</section></footer></div></body></html>

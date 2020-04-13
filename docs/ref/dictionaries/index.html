@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>2-2: Dictionaries · BushelScript Help</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="A _dictionary_ is a set of [terms](terms), each of which has a semantic [UID](terms#term-uids) and is uniquely identified by a syntactic [name](terms#term-names)."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="2-2: Dictionaries · BushelScript Help"/><meta property="og:type" content="website"/><meta property="og:url" content="https://bushelscript.github.io/help/"/><meta property="og:description" content="A _dictionary_ is a set of [terms](terms), each of which has a semantic [UID](terms#term-uids) and is uniquely identified by a syntactic [name](terms#term-names)."/><meta property="og:image" content="https://bushelscript.github.io/help/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://bushelscript.github.io/help/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/help/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/sunburst.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/help/js/scrollSpy.js"></script><link rel="stylesheet" href="/help/css/main.css"/><script src="/help/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/help/"><img class="logo" src="/help/img/favicon.ico" alt="BushelScript Help"/><h2 class="headerTitleWithLogo">BushelScript Help</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/help/docs/tutorial/" target="_self">Quick Tutorial</a></li><li class="siteNavGroupActive"><a href="/help/docs/ref/" target="_self">Reference</a></li><li class=""><a href="/help/docs/integration/" target="_self">Integration</a></li><li class=""><a href="/help/docs/internal/" target="_self">Internals</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Section 2: Terms and Dictionaries</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Language Reference</h3><ul class=""><li class="navListItem"><a class="navItem" href="/help/docs/ref/">Introduction</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Section 1: Basics</h4><ul><li class="navListItem"><a class="navItem" href="/help/docs/ref/user-interaction">Part 1: User Interaction</a></li><li class="navListItem"><a class="navItem" href="/help/docs/ref/basic-syntax">Part 2: Basic Syntax</a></li><li class="navListItem"><a class="navItem" href="/help/docs/ref/data-flow">Part 3: Data Flow</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Section 2: Terms and Dictionaries</h4><ul><li class="navListItem"><a class="navItem" href="/help/docs/ref/terms">Part 1: Terms</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/help/docs/ref/dictionaries">Part 2: Dictionaries</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Section 3: Scripting Features</h4><ul><li class="navListItem"><a class="navItem" href="/help/docs/ref/specifiers">Part 1: Specifiers</a></li><li class="navListItem"><a class="navItem" href="/help/docs/ref/resources">Part 2: Resources</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Section 4: External Interfacing</h4><ul><li class="navListItem"><a class="navItem" href="/help/docs/ref/applescript">Part 1: Interfacing with AppleScript</a></li><li class="navListItem"><a class="navItem" href="/help/docs/ref/shells-and-interpreters">Part 2: Shells and Interpreters</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Section 5: Basic Programming Features</h4><ul><li class="navListItem"><a class="navItem" href="/help/docs/ref/functions">Part 1: Functions</a></li><li class="navListItem"><a class="navItem" href="/help/docs/ref/control-flow">Part 2: Control Flow</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Appendices</h4><ul><li class="navListItem"><a class="navItem" href="/help/docs/ref/built-in-terms">A: Built-in Terms</a></li><li class="navListItem"><a class="navItem" href="/help/docs/ref/project">B: The BushelScript Project</a></li></ul></div></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">2-2: Dictionaries</h1></header><article><div><span><p>A <em>dictionary</em> is a set of <a href="terms">terms</a>, each of which has a semantic <a href="terms#term-uids">UID</a> and is uniquely identified by a syntactic <a href="terms#term-names">name</a>.</p>
+<p>For the purposes of term lookup, a dictionary maps each <a href="terms#term-names">term name</a> to at most one term.</p>
+<p>A term can also <em>contain</em> a single dictionary; this allows for nested dictionaries (i.e., a dictionary in a term in a dictionary). A dictionary is not itself a syntactic element, but its <em>container term</em> can be used to refer to it.</p>
+<p>Organizing terms into dictionaries insures against name clashes, and exporting (see below) ensures that such nested terms are no less convenient to use.</p>
+<p>See also: <a href="../tutorial/dictionaries">Quick Tutorial</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="qualified-term-lookup"></a><a href="#qualified-term-lookup" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Qualified term lookup</h2>
+<p><em>Qualified term lookup</em> looks for a term in a specific dictionary, specified by its container term.</p>
+<p><strong>Syntax</strong>:</p>
+<pre><code class="hljs">&lt;term&gt; :: &lt;term-name&gt; [ : &lt;term&gt; ]
+</code></pre>
+<p><strong>Examples</strong>:</p>
+<pre><code class="hljs css language-applescript">defining dictionary A
+  defining type B
+    define <span class="hljs-built_in">constant</span> C
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+
+A <span class="hljs-comment">--&gt; dictionary term 'A'</span>
+A : B <span class="hljs-comment">--&gt; type term 'B'</span>
+A : B : C <span class="hljs-comment">--&gt; constant term 'C'</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="the-lexicon"></a><a href="#the-lexicon" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>The lexicon</h2>
+<p>The <em>lexicon</em> refers to the list of in-scope dictionaries at a given point in a program. A term is <em>in the lexicon</em> if it is defined by one of those dictionaries.</p>
+<h2><a class="anchor" aria-hidden="true" id="unqualified-term-lookup"></a><a href="#unqualified-term-lookup" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Unqualified term lookup</h2>
+<p>An unqualified term name (such as <code>abc</code>) or the first term name in a qualified term lookup (such as <code>abc</code> in <code>abc : def</code>) are examples of <em>unqualified term lookup</em>. Unqualified term lookup consults the lexicon to find a term.</p>
+<p>Unqualified lookup is comprised of two subprocesses: primary and secondary lookup. Primary lookup is always used first. If primary lookup fails, secondary lookup is tried instead. If secondary lookup also fails, then the entire unqualified term lookup fails and an &quot;undefined term&quot; error results.</p>
+<h3><a class="anchor" aria-hidden="true" id="primary-term-lookup"></a><a href="#primary-term-lookup" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Primary term lookup</h3>
+<p><em>Primary term lookup</em> finds terms in the lexicon. It occurs first in any unqualified lookup.</p>
+<p>The dictionaries in the lexicon are searched in order from bottom (most recently pushed) to top (the built-in top-level dictionary).</p>
+<h4><a class="anchor" aria-hidden="true" id="term-shadowing"></a><a href="#term-shadowing" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Term shadowing</h4>
+<p>A term in the lexicon <em>shadows</em> any <a href="terms#homonyms">homonyms</a> in dictionaries later in the search order. Shadowed terms are hidden from primary lookup until the shadowing term's dictionary is removed from the lexicon.</p>
+<h3><a class="anchor" aria-hidden="true" id="secondary-term-lookup"></a><a href="#secondary-term-lookup" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Secondary term lookup</h3>
+<p><em>Secondary term lookup</em> occurs if primary lookup fails. Secondary lookup finds terms exported by the dictionaries of terms in the lexicon (explained below).</p>
+<h2><a class="anchor" aria-hidden="true" id="exporting-dictionaries"></a><a href="#exporting-dictionaries" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Exporting dictionaries</h2>
+<p>An <em>exporting dictionary</em> <em>exports</em> its contents, making them visible to secondary term lookup when the dictionary's container term is in the lexicon. Most dictionaries are exporting dictionaries.</p>
+<p><strong>Examples</strong>:</p>
+<p>Given the following dictionary setup:</p>
+<pre><code class="hljs css language-applescript">defining dictionary A
+  defining dictionary B
+    define type C
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p><code>A</code> and <code>B</code> are both terms containing exporting dictionaries. Therefore, <code>B</code> is visible to secondary term lookup when <code>A</code> is in the lexicon because <code>A</code> exports it. Likewise, <code>C</code> is visible to secondary term lookup when <code>B</code> is in the lexicon because <code>B</code> exports it.</p>
+<p>Note that <code>C</code> is <em>not</em> visible when only <code>A</code> is in the lexicon because <code>C</code> is exported by <code>B</code>, not <code>A</code>. In this case, <code>C</code> could be referred to as <code>B : C</code> or <code>A : B : C</code>, but not as just <code>C</code>.</p>
+<h2><a class="anchor" aria-hidden="true" id="dictionary-sources"></a><a href="#dictionary-sources" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Dictionary sources</h2>
+<p>The following table lists possible sources of dictionaries, how their container terms are named, and whether they export their contents.</p>
+<table>
+<thead>
+<tr><th>Dictionary source</th><th>Term naming scheme</th><th style="text-align:center">Exports</th><th>Example name mapping</th></tr>
+</thead>
+<tbody>
+<tr><td>Built-in</td><td><code>BushelScript</code></td><td style="text-align:center">N/A</td><td><code>BushelScript</code></td></tr>
+<tr><td>Implicit top script block</td><td><code>script</code></td><td style="text-align:center">N/A</td><td><code>script</code></td></tr>
+<tr><td>Dictionary terms</td><td>Name of dictionary term</td><td style="text-align:center">✓</td><td><code>define dictionary Oxford English</code> → <code>Oxford English</code></td></tr>
+<tr><td>Type terms</td><td>Name of type term</td><td style="text-align:center">✓</td><td><code>define type Keyboard</code> → <code>Keyboard</code></td></tr>
+<tr><td>Resources</td><td>Name of resource</td><td style="text-align:center">✓</td><td><code>use app Safari</code> → <code>Safari</code></td></tr>
+<tr><td>Script block</td><td>Name of script</td><td style="text-align:center">✗</td><td><code>script ChopOnions</code> → <code>ChopOnions</code></td></tr>
+<tr><td>Function block</td><td><code>function</code></td><td style="text-align:center">✗</td><td><code>function</code></td></tr>
+</tbody>
+</table>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/help/docs/ref/terms"><span class="arrow-prev">← </span><span>Part 1: Terms</span></a><a class="docs-next button" href="/help/docs/ref/specifiers"><span>Part 1: Specifiers</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#qualified-term-lookup">Qualified term lookup</a></li><li><a href="#the-lexicon">The lexicon</a></li><li><a href="#unqualified-term-lookup">Unqualified term lookup</a><ul class="toc-headings"><li><a href="#primary-term-lookup">Primary term lookup</a></li><li><a href="#secondary-term-lookup">Secondary term lookup</a></li></ul></li><li><a href="#exporting-dictionaries">Exporting dictionaries</a></li><li><a href="#dictionary-sources">Dictionary sources</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2020 Ian Gregory</section></footer></div></body></html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>3-1: Specifiers · BushelScript Help</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="A _specifier_ is a static, composable query of object relations."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="3-1: Specifiers · BushelScript Help"/><meta property="og:type" content="website"/><meta property="og:url" content="https://bushelscript.github.io/help/"/><meta property="og:description" content="A _specifier_ is a static, composable query of object relations."/><meta property="og:image" content="https://bushelscript.github.io/help/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://bushelscript.github.io/help/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/help/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/sunburst.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/help/js/scrollSpy.js"></script><link rel="stylesheet" href="/help/css/main.css"/><script src="/help/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/help/"><img class="logo" src="/help/img/favicon.ico" alt="BushelScript Help"/><h2 class="headerTitleWithLogo">BushelScript Help</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/help/docs/tutorial/" target="_self">Quick Tutorial</a></li><li class="siteNavGroupActive"><a href="/help/docs/ref/" target="_self">Reference</a></li><li class=""><a href="/help/docs/integration/" target="_self">Integration</a></li><li class=""><a href="/help/docs/internal/" target="_self">Internals</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Section 3: Scripting Features</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Language Reference</h3><ul class=""><li class="navListItem"><a class="navItem" href="/help/docs/ref/">Introduction</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Section 1: Basics</h4><ul><li class="navListItem"><a class="navItem" href="/help/docs/ref/user-interaction">Part 1: User Interaction</a></li><li class="navListItem"><a class="navItem" href="/help/docs/ref/basic-syntax">Part 2: Basic Syntax</a></li><li class="navListItem"><a class="navItem" href="/help/docs/ref/data-flow">Part 3: Data Flow</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Section 2: Terms and Dictionaries</h4><ul><li class="navListItem"><a class="navItem" href="/help/docs/ref/terms">Part 1: Terms</a></li><li class="navListItem"><a class="navItem" href="/help/docs/ref/dictionaries">Part 2: Dictionaries</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Section 3: Scripting Features</h4><ul><li class="navListItem navListItemActive"><a class="navItem" href="/help/docs/ref/specifiers">Part 1: Specifiers</a></li><li class="navListItem"><a class="navItem" href="/help/docs/ref/resources">Part 2: Resources</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Section 4: External Interfacing</h4><ul><li class="navListItem"><a class="navItem" href="/help/docs/ref/applescript">Part 1: Interfacing with AppleScript</a></li><li class="navListItem"><a class="navItem" href="/help/docs/ref/shells-and-interpreters">Part 2: Shells and Interpreters</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Section 5: Basic Programming Features</h4><ul><li class="navListItem"><a class="navItem" href="/help/docs/ref/functions">Part 1: Functions</a></li><li class="navListItem"><a class="navItem" href="/help/docs/ref/control-flow">Part 2: Control Flow</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Appendices</h4><ul><li class="navListItem"><a class="navItem" href="/help/docs/ref/built-in-terms">A: Built-in Terms</a></li><li class="navListItem"><a class="navItem" href="/help/docs/ref/project">B: The BushelScript Project</a></li></ul></div></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">3-1: Specifiers</h1></header><article><div><span><p>A <em>specifier</em> is a static, composable query of object relations.</p>
+<p>See also: <a href="../tutorial/specifiers">Quick Tutorial</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="relations"></a><a href="#relations" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Relations</h2>
+<p><em>Relations</em> <em>relate</em> objects to each other, connecting them through an object graph somewhat analogous to a <a href="https://en.wikipedia.org/wiki/Relational_database">relational database</a>.</p>
+<p>Relations are not themselves syntactic elements, but exist at runtime between objects and are described by specifiers.</p>
+<h2><a class="anchor" aria-hidden="true" id="chaining"></a><a href="#chaining" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Chaining</h2>
+<p>A specifier <em>chains</em> together descriptions of relations, starting from a concrete <em>root object</em>.</p>
+<p>For example, a specifier might refer to the <code>length</code> property of its root object, or it might refer to an element (of an element) of the root.</p>
+<p><strong>Syntax</strong>:</p>
+<pre><code class="hljs">&lt;specifier&gt; :: &lt;unqualified-specifier&gt; [ of &lt;expression&gt; ]
+
+&lt;unqualified-specifier&gt; ::
+  ( &lt;element-specifier&gt; | &lt;property-specifier&gt; )
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="element-relations"></a><a href="#element-relations" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Element relations</h2>
+<p>Objects are often organized into a hierarchical tree structure through <em>element relations</em>. An object is an <em>element</em> of another when it is hierarchically subordinate to it in such a structure.</p>
+<p>An element relation exists based on an element type, an indexing form, and zero to two <em>identifying objects</em> (depending on the indexing form).</p>
+<h3><a class="anchor" aria-hidden="true" id="element-specifiers"></a><a href="#element-specifiers" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Element specifiers</h3>
+<p>An <em>element specifier</em> describes an element relation. The syntax varies by indexing form, but always includes a <a href="terms#term-types">type term</a>. Reciprocally, the syntactic form used determines the specifier's indexing form.</p>
+<p><strong>Syntax</strong>:</p>
+<pre><code class="hljs">&lt;element-specifier&gt; ::
+  ( &lt;simple-specifier&gt; | &lt;name-specifier&gt; | &lt;index-specifier&gt; |
+    &lt;id-specifier&gt; |
+    &lt;absolute-positioning-specifier&gt; |
+    &lt;relative-positioning-specifier&gt; |
+    &lt;range-specifier&gt; | &lt;filter-specifier&gt; |
+    &lt;all-specifier&gt; )
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="indexing-forms"></a><a href="#indexing-forms" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Indexing forms</h2>
+<p>Each element relation has an <em>indexing form</em> that specifies how it selects objects.</p>
+<h3><a class="anchor" aria-hidden="true" id="simple"></a><a href="#simple" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Simple</h3>
+<p>Simple form is a convenience syntax for either Name or Index form, depending on the type of identifying object used.</p>
+<p><strong>Identifying object</strong>: A <code>string</code>, <code>integer</code> or <code>real</code>. <code>string</code> makes a Simple specifier act like a Name specifier; <code>integer</code> and <code>real</code> make a Simple specifier act like an Index specifier. An object that is not of one of these types produces a runtime error.</p>
+<p><strong>Syntax</strong>:</p>
+<pre><code class="hljs">&lt;simple-specifier&gt; :: &lt;type-term&gt; &lt;expression&gt;
+</code></pre>
+<p><strong>Examples</strong>:</p>
+<pre><code class="hljs css language-applescript">document <span class="hljs-string">"Untitled"</span>
+window <span class="hljs-number">1</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="name"></a><a href="#name" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Name</h3>
+<p>Name form specifies a single element according to the value of its <code>ae4:pnam</code> (<code>name</code>) property.</p>
+<p><strong>Identifying object</strong>: A <code>string</code> object that a <code>name</code> property must match.</p>
+<p><strong>Syntax</strong>:</p>
+<pre><code class="hljs">&lt;name-specifier&gt; :: &lt;type-term&gt; named &lt;expression&gt;
+</code></pre>
+<p><strong>Examples</strong>:</p>
+<pre><code class="hljs css language-applescript">document named <span class="hljs-string">"Untitled"</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="index"></a><a href="#index" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Index</h3>
+<p>Index form specifies a single element according to the value of its <code>ae4:pidx</code> (<code>index</code>) property.</p>
+<p><strong>Identifying object</strong>: An <code>integer</code> or <code>real</code> object that an <code>index</code> property must match.</p>
+<p><strong>Syntax</strong>:</p>
+<pre><code class="hljs">&lt;index-specifier&gt; :: &lt;type-term&gt; index &lt;expression&gt;
+</code></pre>
+<p><strong>Examples</strong>:</p>
+<pre><code class="hljs css language-applescript">window index <span class="hljs-number">1</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="id"></a><a href="#id" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ID</h3>
+<p>ID form specifies a single element according to the value of its <code>ae4:ID  </code> (<code>id</code>) property.</p>
+<p><strong>Identifying object</strong>: An object that an <code>id</code> property must match.</p>
+<p><strong>Syntax</strong>:</p>
+<pre><code class="hljs">&lt;id-specifier&gt; :: &lt;type-term&gt; id &lt;expression&gt;
+</code></pre>
+<p><strong>Examples</strong>:</p>
+<pre><code class="hljs css language-applescript"><span class="hljs-comment">-- For exposition purposes, suppose the document's</span>
+<span class="hljs-comment">-- identifying object is the integer 123.</span>
+document named <span class="hljs-string">"Untitled"</span> <span class="hljs-comment">--&gt; document id 123</span>
+let docid be <span class="hljs-built_in">id</span> <span class="hljs-keyword">of</span> <span class="hljs-keyword">that</span> <span class="hljs-comment">--&gt; 123</span>
+
+document <span class="hljs-built_in">id</span> docid <span class="hljs-comment">--&gt; document id 123</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="absolute-positioning"></a><a href="#absolute-positioning" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Absolute positioning</h3>
+<p>Absolute Positioning form specifies a single element according to its ordinal position within a container.</p>
+<p><strong>No identifying objects</strong>, but the selection varies based on the positioning used.</p>
+<p><strong>Syntax</strong>:</p>
+<pre><code class="hljs">&lt;absolute-positioning-specifier&gt; ::
+  ( first | middle | last | some ) &lt;type-term&gt;
+</code></pre>
+<p>The choice of <code>first</code>, <code>middle</code>, <code>last</code> or <code>some</code> affects the meaning of the specifier:</p>
+<ul>
+<li><code>first</code> selects the item ordered first in its container; typically equivalent to <code>&lt;type&gt; index 1</code>.</li>
+<li><code>middle</code> selects the item ordered at the center of its container (the median item), preferring the one ordered first when a two-way tie occurs. For a sequence with a <code>length</code> property, equivalent to <code>&lt;type&gt; index (floor (length / 2))</code>.</li>
+<li><code>last</code> selects the item ordered last in its container; for a sequence with a <code>length</code> property, equivalent to <code>&lt;type&gt; index (length)</code>.</li>
+<li><code>some</code> selects a random item from the container. No, seriously. Listen, this was Apple's idea, not mine 👀.</li>
+</ul>
+<p><strong>Examples</strong>:</p>
+<pre><code class="hljs css language-applescript"><span class="hljs-keyword">first</span> window
+<span class="hljs-keyword">middle</span> window
+<span class="hljs-keyword">last</span> window
+<span class="hljs-keyword">some</span> window
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="relative-positioning"></a><a href="#relative-positioning" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Relative positioning</h3>
+<p>Relative Positioning form specifies a single element according to its ordinal position relative to another element in the same container.</p>
+<p><strong>No identifying objects</strong>, but the selection varies based on the positioning used.</p>
+<p><strong>Syntax</strong>:</p>
+<pre><code class="hljs">&lt;relative-positioning-specifier&gt; ::
+  &lt;type-term&gt; ( before | after ) &lt;expression&gt;
+</code></pre>
+<p>The choice of <code>before</code> or <code>after</code> affects the meaning of the specifier:</p>
+<ul>
+<li><code>before</code> selects the item ordered immediately before the reference element.</li>
+<li><code>after</code> selects the item ordered immediately after the reference element.</li>
+</ul>
+<p><strong>Note</strong> that the reference element is not an identifying object, but is rather the immediate parent of the specifier.</p>
+<p><strong>Examples</strong>:</p>
+<pre><code class="hljs css language-applescript">window <span class="hljs-keyword">before</span> <span class="hljs-keyword">last</span> window
+window <span class="hljs-keyword">after</span> <span class="hljs-keyword">that</span> <span class="hljs-comment">--&gt; last window</span>
+</code></pre>
+<pre><code class="hljs css language-applescript">window <span class="hljs-keyword">after</span> <span class="hljs-keyword">it</span>
+</code></pre>
+<p>To form a Relative Positioning specifier under the current default target, <code>it</code> must be used, since the syntax requires explicit mention of the parent after <code>before</code>/<code>after</code>; i.e., <code>window after</code> is not a syntactically valid specifier.</p>
+<h3><a class="anchor" aria-hidden="true" id="all"></a><a href="#all" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>All</h3>
+<p>All form specifies every element in a container.</p>
+<p><strong>No identifying objects</strong>.</p>
+<p><strong>Syntax</strong>:</p>
+<pre><code class="hljs">&lt;all-specifier&gt; ::
+  ( ( all | every ) &lt;type-term&gt; ) | &lt;plural-type-term&gt;
+</code></pre>
+<p><strong>Examples</strong>:</p>
+<pre><code class="hljs css language-applescript"><span class="hljs-keyword">every</span> window
+all windows
+windows
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="range"></a><a href="#range" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Range</h3>
+<p>Range form specifies elements within a range of values in a container. The test used to determine whether an object is <em>in the range</em> depends on the element and container types, and possibly the type of the identifying objects used.</p>
+<p><strong>Identifying objects</strong>: One representing the lower bound, and another representing the upper bound.</p>
+<p><strong>Syntax</strong>:</p>
+<pre><code class="hljs">&lt;range-specifier&gt; ::
+  &lt;type-term&gt; &lt;expression&gt; ( thru | through ) &lt;expression&gt;
+</code></pre>
+<p><strong>Examples</strong>:</p>
+<pre><code class="hljs css language-applescript"><span class="hljs-built_in">paragraph</span> <span class="hljs-number">1</span> <span class="hljs-keyword">thru</span> <span class="hljs-number">2</span>
+windows <span class="hljs-number">2</span> <span class="hljs-keyword">through</span> <span class="hljs-number">-1</span>
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="filter"></a><a href="#filter" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Filter</h3>
+<p>Filter form specifies elements that pass a certain custom test.</p>
+<p>A Filter test is predicated on comparions between test specimen-rooted specifiers and other objects. Logical operations can compose these tests to form new tests.</p>
+<p><strong>No identifying objects</strong>, but a special test predicate expression is used instead.</p>
+<p><strong>Syntax</strong>:</p>
+<pre><code class="hljs">&lt;filter-specifier&gt; ::
+  &lt;type-term&gt; ( where | whose ) &lt;test-expression&gt;
+
+&lt;test-expression&gt; :: &lt;expression&gt;
+</code></pre>
+<p>The test expression should usually consist of binary comparison or logical <a href="basic-syntax#binary-operators">operations</a>.</p>
+<h4><a class="anchor" aria-hidden="true" id="specimen-specifiers"></a><a href="#specimen-specifiers" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Specimen specifiers</h4>
+<p>Syntactically unrooted specifiers in the test expression are implicitly rooted in the test specimen object. Such specifiers are called <em>specimen specifiers</em>, and are reevaluated for each object tested.</p>
+<p><strong>Examples</strong>:</p>
+<pre><code class="hljs css language-applescript">windows <span class="hljs-keyword">where</span> <span class="hljs-built_in">name</span> <span class="hljs-keyword">contains</span> <span class="hljs-string">"Google"</span>
+</code></pre>
+<p><code>name</code> in this context is a specimen specifier.</p>
+<h2><a class="anchor" aria-hidden="true" id="property-relations"></a><a href="#property-relations" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Property relations</h2>
+<p>A <em>property relation</em> relates a <em>host object</em> to a <em>value object</em> via a <a href="terms#term-types">property term</a>. A given property relation either serves to describe the host object, or is simply related and auxiliary to it.</p>
+<p><em>Property</em> and <em>property relation</em> are interchangeable terms.</p>
+<h3><a class="anchor" aria-hidden="true" id="attributive-properties"></a><a href="#attributive-properties" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Attributive properties</h3>
+<p>A property relation is <em>attributive</em> when it serves to describe its host object. For instance, the <code>name</code> property often ascribes its host a user-friendly name string.</p>
+<h3><a class="anchor" aria-hidden="true" id="relative-properties"></a><a href="#relative-properties" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Relative properties</h3>
+<p>A property relation is <em>relative</em> when it relates its host to its value but does not serve to describe the host. Relative properties effectively serve as individual named element relations.</p>
+<p>A property can typically be called relative if it refers to an object that cannot be described as a simple &quot;value&quot;; that is, if it refers to a text box or a table cell, and not a string or an integer.</p>
+<p>For example, the Safari application's <code>window</code> type declares the property <code>current tab</code>, with type <code>tab</code>. The tab deemed &quot;current&quot; in a web browser is prone to change at a moment's notice, and is an element of the window rather than a descriptive attribute. This property is thus a relative property.</p>
+<h3><a class="anchor" aria-hidden="true" id="property-specifiers"></a><a href="#property-specifiers" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Property specifiers</h3>
+<p>A <em>property specifier</em> describes a property relation, and is created by simply naming a property term.</p>
+<p><strong>Syntax</strong>:</p>
+<pre><code class="hljs">&lt;property-specifier&gt; :: &lt;property-term&gt;
+</code></pre>
+<p><strong>Examples</strong>:</p>
+<pre><code class="hljs css language-applescript"><span class="hljs-built_in">name</span>
+current <span class="hljs-literal">tab</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="evaluation"></a><a href="#evaluation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Evaluation</h2>
+<p><em>Evaluating</em> a specifier follows its chain of relational queries to arrive at a value or storage location.</p>
+<h3><a class="anchor" aria-hidden="true" id="implicit-evaluation"></a><a href="#implicit-evaluation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Implicit evaluation</h3>
+<p>Specifiers are <em>implicitly evaluated</em> in most expression contexts. This means that naming a specifier will, by default, result in the specifier's current value rather than a static, unevaluated <code>specifier</code> object.</p>
+<p>The following are all the contexts where specifiers are <em>not</em> implicitly evaluated:</p>
+<ul>
+<li>The argument of a reference expression (see below); e.g., <code>ref window 1</code>.</li>
+<li>The target expression of a <code>tell</code> expression; e.g., <code>tell window 1</code>.</li>
+<li>Key expressions in a record; e.g., <code>{name: &quot;abc&quot;}</code>.</li>
+<li>The destination expression of a <code>set</code> expression; e.g., <code>set URL to &quot;https://google.com/&quot;</code>.</li>
+<li>The parent expression of a specifier phrase; e.g., <code>name of window 1</code> (the final specifier will be evaluated, but <code>window 1</code> will not).</li>
+<li>Filter test expressions; e.g., <code>windows where name is &quot;Untitled&quot;</code> (the final specifier will be evaluated, but <code>name</code> will not).</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="explicit-evaluation"></a><a href="#explicit-evaluation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Explicit evaluation</h3>
+<p>A specifier can be <em>explicitly evaluated</em> with a <code>get</code> expression. This always results in evaluation, even in contexts where implicit evaluation is disabled.</p>
+<p><strong>Syntax</strong>:</p>
+<pre><code class="hljs">&lt;get-expression&gt; :: get &lt;expression&gt;
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="reference-expressions"></a><a href="#reference-expressions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Reference expressions</h3>
+<p>Implicit evaluation can be contextually disabled with a <code>ref</code> expression. This always creates a <code>specifier</code> object, which can then be sent in <a href="resources#remote-calls">remote calls</a> or evaluated later.</p>
+<p><strong>Syntax</strong>:</p>
+<pre><code class="hljs">&lt;ref-expression&gt; :: ref &lt;expression&gt;
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/help/docs/ref/dictionaries"><span class="arrow-prev">← </span><span>Part 2: Dictionaries</span></a><a class="docs-next button" href="/help/docs/ref/resources"><span>Part 2: Resources</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#relations">Relations</a></li><li><a href="#chaining">Chaining</a></li><li><a href="#element-relations">Element relations</a><ul class="toc-headings"><li><a href="#element-specifiers">Element specifiers</a></li></ul></li><li><a href="#indexing-forms">Indexing forms</a><ul class="toc-headings"><li><a href="#simple">Simple</a></li><li><a href="#name">Name</a></li><li><a href="#index">Index</a></li><li><a href="#id">ID</a></li><li><a href="#absolute-positioning">Absolute positioning</a></li><li><a href="#relative-positioning">Relative positioning</a></li><li><a href="#all">All</a></li><li><a href="#range">Range</a></li><li><a href="#filter">Filter</a></li></ul></li><li><a href="#property-relations">Property relations</a><ul class="toc-headings"><li><a href="#attributive-properties">Attributive properties</a></li><li><a href="#relative-properties">Relative properties</a></li><li><a href="#property-specifiers">Property specifiers</a></li></ul></li><li><a href="#evaluation">Evaluation</a><ul class="toc-headings"><li><a href="#implicit-evaluation">Implicit evaluation</a></li><li><a href="#explicit-evaluation">Explicit evaluation</a></li><li><a href="#reference-expressions">Reference expressions</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2020 Ian Gregory</section></footer></div></body></html>

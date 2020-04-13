@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Language Reference – Introduction · BushelScript Help</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Welcome to the _BushelScript Language Reference_. This set of documents is intended to specify, to a reasonable extent, the behaviour of the BushelScript language infrastructure and runtime interface."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Language Reference – Introduction · BushelScript Help"/><meta property="og:type" content="website"/><meta property="og:url" content="https://bushelscript.github.io/help/"/><meta property="og:description" content="Welcome to the _BushelScript Language Reference_. This set of documents is intended to specify, to a reasonable extent, the behaviour of the BushelScript language infrastructure and runtime interface."/><meta property="og:image" content="https://bushelscript.github.io/help/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://bushelscript.github.io/help/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/help/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/sunburst.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/help/js/scrollSpy.js"></script><link rel="stylesheet" href="/help/css/main.css"/><script src="/help/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/help/"><img class="logo" src="/help/img/favicon.ico" alt="BushelScript Help"/><h2 class="headerTitleWithLogo">BushelScript Help</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/help/docs/tutorial/" target="_self">Quick Tutorial</a></li><li class="siteNavGroupActive siteNavItemActive"><a href="/help/docs/ref/" target="_self">Reference</a></li><li class=""><a href="/help/docs/integration/" target="_self">Integration</a></li><li class=""><a href="/help/docs/internal/" target="_self">Internals</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Language Reference</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Language Reference</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/help/docs/ref/">Introduction</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Section 1: Basics</h4><ul><li class="navListItem"><a class="navItem" href="/help/docs/ref/user-interaction">Part 1: User Interaction</a></li><li class="navListItem"><a class="navItem" href="/help/docs/ref/basic-syntax">Part 2: Basic Syntax</a></li><li class="navListItem"><a class="navItem" href="/help/docs/ref/data-flow">Part 3: Data Flow</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Section 2: Terms and Dictionaries</h4><ul><li class="navListItem"><a class="navItem" href="/help/docs/ref/terms">Part 1: Terms</a></li><li class="navListItem"><a class="navItem" href="/help/docs/ref/dictionaries">Part 2: Dictionaries</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Section 3: Scripting Features</h4><ul><li class="navListItem"><a class="navItem" href="/help/docs/ref/specifiers">Part 1: Specifiers</a></li><li class="navListItem"><a class="navItem" href="/help/docs/ref/resources">Part 2: Resources</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Section 4: External Interfacing</h4><ul><li class="navListItem"><a class="navItem" href="/help/docs/ref/applescript">Part 1: Interfacing with AppleScript</a></li><li class="navListItem"><a class="navItem" href="/help/docs/ref/shells-and-interpreters">Part 2: Shells and Interpreters</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Section 5: Basic Programming Features</h4><ul><li class="navListItem"><a class="navItem" href="/help/docs/ref/functions">Part 1: Functions</a></li><li class="navListItem"><a class="navItem" href="/help/docs/ref/control-flow">Part 2: Control Flow</a></li></ul></div><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Appendices</h4><ul><li class="navListItem"><a class="navItem" href="/help/docs/ref/built-in-terms">A: Built-in Terms</a></li><li class="navListItem"><a class="navItem" href="/help/docs/ref/project">B: The BushelScript Project</a></li></ul></div></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Language Reference – Introduction</h1></header><article><div><span><p>Welcome to the <em>BushelScript Language Reference</em>. This set of documents is intended to specify, to a reasonable extent, the behaviour of the BushelScript language infrastructure and runtime interface.</p>
+<h2><a class="anchor" aria-hidden="true" id="parallel-documents"></a><a href="#parallel-documents" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Parallel documents</h2>
+<p>For each reference page, there is a parallel page in the <a href="/help/docs/tutorial">Quick Tutorial</a> which is written to be shorter and more accessible but which also glosses over details. Each page contains a &quot;see also&quot; link to its Quick Tutorial companion.</p>
+<h2><a class="anchor" aria-hidden="true" id="the-bushelscript-scripting-language"></a><a href="#the-bushelscript-scripting-language" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>The BushelScript scripting language</h2>
+<p>BushelScript is a macOS scripting language designed with the following principal goals in mind:</p>
+<ul>
+<li>Be useful:
+<ul>
+<li>Displace AppleScript for most practical AppleEvent scripting.</li>
+<li>Supersede AppleScript as &quot;the ultimate duct tape&quot; by integrating with tons of different scripting interfaces.</li>
+<li>Add practically useful features on top of an AppleScript-lookalike base.</li>
+</ul></li>
+<li>Be predictable:
+<ul>
+<li>Be open-source and driven by the community.</li>
+<li>Be straightforward to read and minimally confusing to write and debug.</li>
+<li>Avoid obscure, lacking or useless features.</li>
+</ul></li>
+<li>Be accessible:
+<ul>
+<li>Don't force novice scripters to read code with unintelligible symbols.</li>
+<li>Don't force experienced programmers into a natural language paradigm.</li>
+<li>Avoid alienating non-English speakers.</li>
+<li>Seamlessly translate between programmer/user registers and different natural language bases.</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="versions-and-variants"></a><a href="#versions-and-variants" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Versions and variants</h2>
+<p>This reference describes version <strong>0.2</strong> of the BushelScript software package.</p>
+<p>Syntax specifications and examples in this reference refer to the &quot;BushelScript (English)&quot;/<code>bushelscript_en</code> language module.</p>
+<h2><a class="anchor" aria-hidden="true" id="grammar-format"></a><a href="#grammar-format" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Grammar format</h2>
+<p>A loose <a href="https://en.wikipedia.org/wiki/Backus–Naur_form">BNF</a>-esque grammar is defined by this reference, in sections with the <strong>Syntax</strong> boldface callout.</p>
+<ul>
+<li>Anything inside <code>&lt;</code> and <code>&gt;</code> refers to a production, or a named grammar element.</li>
+<li><code>::</code> denotes the definition of a production.</li>
+<li>Any non-[<code>&lt;</code> <code>&gt;</code> <code>(</code> <code>)</code> <code>[</code> <code>]</code> <code>|</code> <code>\</code> <code>::</code> whitespace] characters occur literally.</li>
+<li>A pair of <code>(</code> and <code>)</code> groups element as appropriate.</li>
+<li>Elements inside <code>[</code> and <code>]</code> may or may not occur. The consequences of inclusion or omission depend on the context.</li>
+<li>A <code>|</code> between two elements indicates that either may occur. The semantics of each again depend on context.</li>
+<li>A <code>\</code> &quot;escapes&quot; a character: the single character that follows occurs literally regardless of any of these rules.</li>
+</ul>
+<p>For example:</p>
+<pre><code class="hljs">&lt;foo&gt; :: foo [&lt;bar&gt;]
+&lt;bar&gt; :: bar ( &lt;bar&gt; | baz )
+</code></pre>
+<table>
+<thead>
+<tr><th>Source code</th><th>Matches <code>&lt;foo&gt;</code>?</th></tr>
+</thead>
+<tbody>
+<tr><td>foo</td><td>✓</td></tr>
+<tr><td>foo bar baz</td><td>✓</td></tr>
+<tr><td>foo bar bar baz</td><td>✓</td></tr>
+<tr><td>bar</td><td>✗</td></tr>
+<tr><td>foo bar</td><td>✗</td></tr>
+<tr><td>foobarbaz</td><td>✗</td></tr>
+</tbody>
+</table>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-next button" href="/help/docs/ref/user-interaction"><span>Part 1: User Interaction</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#parallel-documents">Parallel documents</a></li><li><a href="#the-bushelscript-scripting-language">The BushelScript scripting language</a></li><li><a href="#versions-and-variants">Versions and variants</a></li><li><a href="#grammar-format">Grammar format</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2020 Ian Gregory</section></footer></div></body></html>

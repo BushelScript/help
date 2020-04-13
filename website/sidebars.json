@@ -1,0 +1,146 @@
+{
+  "tutorial": {
+    "Quick Tutorial": [
+      "tutorial/index",
+      {
+        "type": "subcategory",
+        "label": "Section 1: Basics",
+        "ids": [
+          "tutorial/user-interaction",
+          "tutorial/basic-syntax",
+          "tutorial/data-flow"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Section 2: Terms and Dictionaries",
+        "ids": [
+          "tutorial/terms",
+          "tutorial/dictionaries"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Section 3: Scripting Features",
+        "ids": [
+          "tutorial/specifiers",
+          "tutorial/resources"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Section 4: External Interfacing",
+        "ids": [
+          "tutorial/applescript",
+          "tutorial/shells-and-interpreters"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Section 5: Basic Programming Features",
+        "ids": [
+          "tutorial/functions",
+          "tutorial/control-flow"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Section 6: Basic Application Scripting",
+        "ids": [
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Section 7: Advanced Programming Features",
+        "ids": [
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Section 8: Advanced Application Scripting",
+        "ids": [
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Appendices",
+        "ids": [
+          "tutorial/built-in-terms",
+          "tutorial/project"
+        ]
+      }
+    ]
+  },
+  "ref": {
+    "Language Reference": [
+      "ref/index",
+      {
+        "type": "subcategory",
+        "label": "Section 1: Basics",
+        "ids": [
+          "ref/user-interaction",
+          "ref/basic-syntax",
+          "ref/data-flow"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Section 2: Terms and Dictionaries",
+        "ids": [
+          "ref/terms",
+          "ref/dictionaries"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Section 3: Scripting Features",
+        "ids": [
+          "ref/specifiers",
+          "ref/resources"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Section 4: External Interfacing",
+        "ids": [
+          "ref/applescript",
+          "ref/shells-and-interpreters"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Section 5: Basic Programming Features",
+        "ids": [
+          "ref/functions",
+          "ref/control-flow"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Section 6: Basic Application Scripting",
+        "ids": [
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Section 7: Advanced Programming Features",
+        "ids": [
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Section 8: Advanced Application Scripting",
+        "ids": [
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Appendices",
+        "ids": [
+          "ref/built-in-terms",
+          "ref/project"
+        ]
+      }
+    ]
+  }
+}

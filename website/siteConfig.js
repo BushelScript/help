@@ -25,7 +25,7 @@ const users = [
 const siteConfig = {
   title: 'BushelScript Help', // Title for your website.
   tagline: 'Guides, reference material, and other docs for BushelScript',
-  url: 'https://bushelscript.github.io/', // Your website URL
+  url: 'https://bushelscript.github.io', // Your website URL
   baseUrl: '/help/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',

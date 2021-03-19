@@ -8,7 +8,8 @@
         "ids": [
           "tutorial/user-interaction",
           "tutorial/basic-syntax",
-          "tutorial/data-flow"
+          "tutorial/data-flow",
+          "tutorial/object-types"
         ]
       },
       {
@@ -80,7 +81,8 @@
         "ids": [
           "ref/user-interaction",
           "ref/basic-syntax",
-          "ref/data-flow"
+          "ref/data-flow",
+          "ref/object-types"
         ]
       },
       {

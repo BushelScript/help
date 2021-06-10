@@ -90,10 +90,10 @@ class Index extends React.Component {
       <Block>
         {[
           {
-            content: '<iframe src="https://discordapp.com/widget?id=689209232905470044&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>',
+            // content: '<iframe src="https://discordapp.com/widget?id=689209232905470044&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>',
             // image:  `${baseUrl}img/undraw_operating_system.svg`,
             // imageAlign: 'bottom',
-            title: 'Still stuck? <a href="https://discord.gg/xdyCK9t" title="Join Discord server">Join us on Discord</a>',
+            title: 'Want more help? Join us on<br><a href="https://github.com/BushelScript/BushelScript/discussions">GitHub Discussions</a><br><a href="https://discord.gg/xdyCK9t">Discord</a>',
           },
         ]}
       </Block>

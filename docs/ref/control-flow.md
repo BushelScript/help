@@ -3,55 +3,84 @@ title: 5-2: Control Flow
 sidebar_label: Part 2: Control Flow
 ---
 
-_Not written yet._
-
 See also: [Quick Tutorial](../tutorial/control-flow).
 
 ## Conditional expressions
 
-Conditional expressions in BushelScript are fairly standard:
+**Syntax**:
 
-```applescript
-if 1 = 2 then
-  alert "Houston, we have an even bigger problem"
+    <conditional> :: if <expression>
+                     ( then <expression> | [ then ] <sequence> )
+                     [ else ( <expression> | <sequence> ) ]
+
+**Examples**:
+
+```
+if 1 = 2
+  alert "computer dun broke"
 else if "hello" contains "p"
-  alert "Whatever you say… (??)"
+  alert "computer dun broke"
 else
-  if true
-    alert "Everything is completely normal."
-  else
-    alert "thisisfine.jpg"
-  end
+  if true then alert "everything is fine"
+  else alert "thisisfine.jpg"
+  alert "You selected" & (if ask for boolean prompt "Yes or no?" then "yes" else "no")
 end
 ```
 
-`then` after the condition is optional.
-
 ## Conditional loops
 
-```applescript
-minutes of current date
-repeat while (minutes of (let date be current date)) = that
-  log seconds of date
+**Syntax**:
+
+    <conditional-loop> :: repeat while <expression> <sequence>
+
+**Examples**:
+
+```
+let l be {}
+let min be minutes of current date
+repeat while (minutes of (let date be current date)) = min
+  add seconds of date to l
+  delay 1
+end
+l
+```
+
+```
+seconds of current date
+repeat while that = min
+  seconds of current date
 end
 ```
 
 ## Constant-bounded loops
 
-```applescript
+**Syntax**:
+
+    <bounded-loop> :: repeat <expression> times <sequence>
+
+**Examples**:
+
+```
 let choices be {}
 repeat 5 times
   choose from {"Choice A", "Choice B"}
-  -- (this command is NYI!) add that to choices
+  add that to choices
 end
+choices
 ```
 
 ## Iterative loops
 
-```applescript
+**Syntax**:
+
+    <iterative-loop> :: repeat for <term-name> in <expression>
+
+**Examples**:
+
+```
 use app Finder
 alert "Your currently connected disks are…"
-tell Finder to get name of disks
+tell Finder to get name of every disk
 repeat for disk name in that
   alert disk name
 end

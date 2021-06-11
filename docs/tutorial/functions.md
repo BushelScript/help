@@ -11,7 +11,7 @@ See also: [Language Reference](../ref/functions).
 
 Control automatically returns from a function after its last sequenced expression is evaluated. However, you can also return explicitly using the `return` keyword:
 
-```applescript
+```
 -- Tells the user something on the hour
 on notify user: for date
   if (minutes of date) ≠ 0 then return false

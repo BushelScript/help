@@ -19,7 +19,7 @@ To this end, a `use` expression declares a script _requirement_. If any such req
 
 **Examples**:
 
-```applescript
+```
 use application Google Chrome
 ```
 
@@ -39,7 +39,7 @@ Resources are often accompanied by _imported terms_, which they [contain and exp
 
 **Examples**:
 
-```applescript
+```
 use application Contacts
 
 Contacts : person --> type 'person' (contained within Contacts)
@@ -89,7 +89,7 @@ Decoding can fail if a suitable data type mapping does not exist. When this occu
 
 **Examples**:
 
-```applescript
+```
 use app Mail
 use application id com.apple.Safari
 

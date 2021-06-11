@@ -23,7 +23,7 @@ _Qualified term lookup_ looks for a term in a specific dictionary, specified by 
 
 **Examples**:
 
-```applescript
+```
 defining dictionary A
   defining type B
     define constant C
@@ -67,7 +67,7 @@ An _exporting dictionary_ _exports_ its contents, making them visible to seconda
 
 Given the following dictionary setup:
 
-```applescript
+```
 defining dictionary A
   defining dictionary B
     define type C

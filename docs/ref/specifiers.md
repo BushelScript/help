@@ -62,7 +62,7 @@ Simple form is a convenience syntax for either Name or Index form, depending on 
 
 **Examples**:
 
-```applescript
+```
 document "Untitled"
 window 1
 ```
@@ -79,7 +79,7 @@ Name form specifies a single element according to the value of its `ae4:pnam` (`
 
 **Examples**:
 
-```applescript
+
 document named "Untitled"
 ```
 
@@ -95,7 +95,7 @@ Index form specifies a single element according to the value of its `ae4:pidx` (
 
 **Examples**:
 
-```applescript
+
 window index 1
 ```
 
@@ -111,7 +111,7 @@ ID form specifies a single element according to the value of its <code>ae4:ID&nb
 
 **Examples**:
 
-```applescript
+
 -- For exposition purposes, suppose the document's
 -- identifying object is the integer 123.
 document named "Untitled" --> document id 123
@@ -140,7 +140,7 @@ The choice of `first`, `middle`, `last` or `some` affects the meaning of the spe
 
 **Examples**:
 
-```applescript
+
 first window
 middle window
 last window
@@ -167,12 +167,12 @@ The choice of `before` or `after` affects the meaning of the specifier:
 
 **Examples**:
 
-```applescript
+
 window before last window
 window after that --> last window
 ```
 
-```applescript
+
 window after it
 ```
 
@@ -191,7 +191,7 @@ All form specifies every element in a container.
 
 **Examples**:
 
-```applescript
+
 every window
 all windows
 windows
@@ -210,7 +210,7 @@ Range form specifies elements within a range of values in a container. The test 
 
 **Examples**:
 
-```applescript
+
 paragraph 1 thru 2
 windows 2 through -1
 ```
@@ -238,7 +238,7 @@ Syntactically unrooted specifiers in the test expression are implicitly rooted i
 
 **Examples**:
 
-```applescript
+
 windows where name contains "Google"
 ```
 
@@ -272,7 +272,7 @@ A _property specifier_ describes a property relation, and is created by simply n
 
 **Examples**:
 
-```applescript
+
 name
 current tab
 ```

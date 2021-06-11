@@ -1,8 +1,6 @@
 ---
-title: Integration
-sidebar_label: …
+title: Integrating BushelScript – Introduction
+sidebar_label: Introduction
 ---
 
-_Nothing here yet!_
-
-This category is for docs relating to integrations with other scripting systems. e.g., `bushelscript`, Automator action for outside -> in; and comprehensive guides to weave expressions, AppleScript library support, etc. for inside -> out.
+Welcome to _Integrating BushelScript_. These are some additional guides and documentation on how to integrate BushelScript with existing software, and how to integrate existing software into your BushelScript programs. Please select a topic in the sidebar.

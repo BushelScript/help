@@ -1,8 +1,6 @@
 ---
-title: Internal
-sidebar_label: …
+title: BushelScript Internals – Introduction
+sidebar_label: Introduction
 ---
 
-_Nothing here yet!_
-
-This category is for anything internal to the BushelScript infrastructure, such as component listings, translation file format, and API descriptions for language module creation.
+Welcome to the BushelScript internals docs. Please select a topic in the sidebar.

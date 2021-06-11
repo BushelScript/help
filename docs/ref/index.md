@@ -29,32 +29,33 @@ BushelScript is a macOS scripting language designed with the following principal
 
 ## Versions and variants
 
-This reference describes version **0.2** of the BushelScript software package.
-
-Syntax specifications and examples in this reference refer to the "BushelScript (English)"/`bushelscript_en` language module.
+This reference describes version **0.4** of the BushelScript software package. Syntax specifications and examples refer to the "BushelScript English"/`bushelscript_en` language module.
 
 ## Grammar format
 
-A loose [BNF](https://en.wikipedia.org/wiki/Backus–Naur_form)-esque grammar is defined by this reference, in sections with the **Syntax** boldface callout.
+A loose grammar is defined by this reference, in sections with the **Syntax** boldface callout. The form is similar to [BNF](https://en.wikipedia.org/wiki/Backus–Naur_form):
 
-- Anything inside `<` and `>` refers to a production, or a named grammar element.
-- `::` denotes the definition of a production.
-- Any non-[`<` `>` `(` `)` `[` `]` `|` `\` `::` whitespace] characters occur literally.
-- A pair of `(` and `)` groups element as appropriate.
-- Elements inside `[` and `]` may or may not occur. The consequences of inclusion or omission depend on the context.
-- A `|` between two elements indicates that either may occur. The semantics of each again depend on context.
-- A `\` "escapes" a character: the single character that follows occurs literally regardless of any of these rules.
+- Anything inside `<` and `>` refers to a "rule" or "production", i.e., a named grammar element.
+- `::` denotes the definition of a rule.
+- Any non-[`<` `>` `(` `)` `[` `]` `|` `::` whitespace] characters occur literally.
+- `(` and `)` group elements.
+- Elements inside `[` and `]` may or may not occur. Whether they occur can alter semantics.
+- A `|` between two elements indicates that either may occur. Which one occurs can alter semantics.
+
+To simplify the grammar, we allow rules to be templates. We write rule `R` templated on `X` as `R( X )`.
 
 For example:
 
-    <foo> :: foo [<bar>]
-    <bar> :: bar ( <bar> | baz )
+    <foo> :: foo [ <bar> ]
+    <bar> :: bar ( baz | <bar> )
 
 | Source code     | Matches `<foo>`? |
 |-----------------|------------------|
 | foo             | ✓                |
-| foo bar baz     | ✓                |
-| foo bar bar baz | ✓                |
 | bar             | ✗                |
 | foo bar         | ✗                |
-| foobarbaz       | ✗                |
+| foo baz         | ✗                |
+| foo bar baz     | ✓                |
+| foo bar bar baz | ✓                |
+
+The full grammar comprises [Appendix B](grammar).

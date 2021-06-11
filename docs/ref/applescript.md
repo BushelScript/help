@@ -31,7 +31,7 @@ Handlers named using AppleScript _user-defined identifiers_ (green text in Scrip
 
 **Examples**:
 
-```applescript
+```
 use AppleScript My Script at "~/Scripts/My Script.scpt"
 
 tell My Script

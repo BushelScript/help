@@ -17,7 +17,7 @@ _Line comments_ begin with `--` and continue to the end of their line.
 
 **Syntax**:
 
-    -- <line-comment-text>
+    <line-comment> :: -- <line-comment-text>
     
     <line-comment-text> ::
       (any valid UTF-8 byte sequence, excluding line breaks)
@@ -28,9 +28,9 @@ _Block comments_ begin with `--(` and continue through to new lines, until eithe
 
 **Syntax**:
 
-    --( <multiline-comment-text> [ )-- ]
+    <block-comment> :: --( <block-comment-text> [ )-- ]
     
-    <multiline-comment-text> :: (any valid UTF-8 byte sequence)
+    <block-comment-text> :: (any valid UTF-8 byte sequence)
 
 ## Values
 
@@ -77,7 +77,7 @@ A `string` is a sequence of Unicode characters. If it's text, it goes in a `stri
 
 **Examples**:
 
-```applescript
+```
 "abc"
 "this is a string value"
 "😀😃😄" -- length 3 (grapheme clusters, not UTF-16 units)
@@ -89,14 +89,11 @@ A `boolean` represents the answer to a yes-or-no question. It can be reacted to 
 
 **Syntax**:
 
-    <boolean> :: ( <true> | <false> )
-    
-    <true> :: true
-    <false> :: false
+    <boolean> :: true | false
 
 **Examples**:
 
-```applescript
+```
 true
 false
 true and false --> false
@@ -115,14 +112,14 @@ false or true --> true
 
 **Examples**:
 
-```applescript
+```
 null
 null as boolean --> false
 ```
 
 Parameters without corresponding arguments in a [function](functions) [invocation](#command-invocations) are set to `null` in the function body:
 
-```applescript
+```
 on build greeting: to name
   -- 'name' is null if the 'to' parameter is omitted
   alert name

@@ -16,7 +16,7 @@ A `tell` expression pushes a new _default target_. The current default target:
 
 This example demonstrates the first point:
 
-```applescript
+```
 tell "hello!"
   -- When no direct object is specified, the default command target
   -- is used as the direct object:
@@ -29,7 +29,7 @@ end
 
 This example demonstrates the second point:
 
-```applescript
+
 tell 9
   -- Handled by the integer object '9':
   sqrt

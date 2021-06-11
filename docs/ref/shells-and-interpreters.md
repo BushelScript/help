@@ -31,7 +31,7 @@ Another `#!` on its own line ends the weave body. If it declares an interpreter,
 
 **Examples**:
 
-```applescript
+```
 #!/bin/bash
 echo 'Hello, world!'
 #!/usr/bin/python3

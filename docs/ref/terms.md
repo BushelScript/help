@@ -73,7 +73,7 @@ Overlapping terms with the same TUID but different names are _synonyms_ of each 
 
 **Examples**:
 
-```applescript
+```
 4 -- Can be any expression.
 
 (sqrt that) = (square root that) --> true
@@ -109,20 +109,20 @@ _Raw form_ is special syntax that creates an anonymous term by specifying its ty
 
 **Examples**:
 
-```applescript
+
 ref «type ae4:cwin» --> window
 ref «type var(plural):ae4:cwin» --> windows
 ```
 
 This example refers to already-defined terms, which are displayed with their regular names at runtime.
 
-```applescript
+
 «resource res:appid:com.apple.Safari» --> application id "com.apple.Safari"
 ```
 
 If a resource's [requirement](resources#requirements) is not satisfied, a parse error will result as usual, although the error message may be less clear.
 
-```applescript
+
 «type ae4:abcd» --> «type ae4:abcd»
 ```
 

@@ -66,8 +66,7 @@
         "type": "subcategory",
         "label": "Appendices",
         "ids": [
-          "tutorial/built-in-terms",
-          "tutorial/project"
+          "tutorial/built-in-terms"
         ]
       }
     ]
@@ -140,9 +139,31 @@
         "label": "Appendices",
         "ids": [
           "ref/built-in-terms",
-          "ref/project"
+          "ref/grammar"
         ]
       }
+    ]
+  },
+  "integration": {
+    "Integrating BushelScript": [
+      "integration/index"
+    ],
+    "Using BushelScript via existing tools": [
+      "integration/cli",
+      "integration/automator"
+    ],
+    "Using existing tools inside BushelScript": [
+      "integration/shells-and-interpreters",
+      "integration/applescript"
+    ]
+  },
+  "internal": {
+    "BushelScript Internals": [
+      "internal/index"
+    ],
+    "Terminology": [
+      "internal/translation",
+      "internal/sdef"
     ]
   }
 }

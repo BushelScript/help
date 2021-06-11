@@ -1,0 +1,33 @@
+---
+title: BushelScript Help
+---
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
+
+export const fontSize = '20px';
+
+<div style={{textAlign: 'center'}}>
+  <h1>BushelScript Help</h1>
+  <p style={{fontSize: fontSize}}>Select a section to get started:</p>
+</div>
+
+
+export const DocSectionLink = props => {
+  return (
+    <div style={{display: 'flex', flexFlow: 'row wrap', justifyContent: 'center', alignItems: 'flex-end', margin: '10px', marginTop: '0'}}>
+      <Button style={{marginRight: '10px'}} variant='outline-primary' href={props.to}>{props.title}</Button>
+      <p style={{lineHeight: '0.5em'}}>{props.description}</p>
+    </div>
+  );
+};
+
+<div style={{display: 'flex', flexFlow: 'column wrap', justifyContent: 'center', alignItems: 'flex-start'}}>
+  <DocSectionLink to='docs/tutorial' title='Quick Tutorial' description='Guide designed to teach the language quickly and gloss over some details'/>
+  <DocSectionLink to='docs/ref' title='Reference' description='Detailed language and runtime documentation'/>
+  <DocSectionLink to='docs/integration' title='Integration' description='Additional guides on integrating BushelScript with existing tools'/>
+  <DocSectionLink to='docs/internal' title='Internals' description='Documentation for file formats, the language module API, etc.'/>
+</div>
+
+<br></br>
+<p style={{textAlign: 'center', fontSize: fontSize}}>Additional resources are linked in the footer.</p>

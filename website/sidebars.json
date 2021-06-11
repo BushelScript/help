@@ -3,9 +3,9 @@
     "Quick Tutorial": [
       "tutorial/index",
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Section 1: Basics",
-        "ids": [
+        "items": [
           "tutorial/user-interaction",
           "tutorial/basic-syntax",
           "tutorial/data-flow",
@@ -13,59 +13,59 @@
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Section 2: Terms and Dictionaries",
-        "ids": [
+        "items": [
           "tutorial/terms",
           "tutorial/dictionaries"
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Section 3: Scripting Features",
-        "ids": [
+        "items": [
           "tutorial/specifiers",
           "tutorial/resources"
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Section 4: External Interfacing",
-        "ids": [
+        "items": [
           "tutorial/applescript",
           "tutorial/shells-and-interpreters"
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Section 5: Basic Programming Features",
-        "ids": [
+        "items": [
           "tutorial/functions",
           "tutorial/control-flow"
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Section 6: Basic Application Scripting",
-        "ids": [
+        "items": [
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Section 7: Advanced Programming Features",
-        "ids": [
+        "items": [
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Section 8: Advanced Application Scripting",
-        "ids": [
+        "items": [
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Appendices",
-        "ids": [
+        "items": [
           "tutorial/built-in-terms"
         ]
       }
@@ -75,9 +75,9 @@
     "Language Reference": [
       "ref/index",
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Section 1: Basics",
-        "ids": [
+        "items": [
           "ref/user-interaction",
           "ref/basic-syntax",
           "ref/data-flow",
@@ -85,59 +85,59 @@
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Section 2: Terms and Dictionaries",
-        "ids": [
+        "items": [
           "ref/terms",
           "ref/dictionaries"
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Section 3: Scripting Features",
-        "ids": [
+        "items": [
           "ref/specifiers",
           "ref/resources"
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Section 4: External Interfacing",
-        "ids": [
+        "items": [
           "ref/applescript",
           "ref/shells-and-interpreters"
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Section 5: Basic Programming Features",
-        "ids": [
+        "items": [
           "ref/functions",
           "ref/control-flow"
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Section 6: Basic Application Scripting",
-        "ids": [
+        "items": [
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Section 7: Advanced Programming Features",
-        "ids": [
+        "items": [
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Section 8: Advanced Application Scripting",
-        "ids": [
+        "items": [
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Appendices",
-        "ids": [
+        "items": [
           "ref/built-in-terms",
           "ref/grammar"
         ]

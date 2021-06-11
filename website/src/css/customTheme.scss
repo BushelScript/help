@@ -1,0 +1,15 @@
+:root{
+  --ifm-color-primary-lightest: #ED9E39;
+  --ifm-color-primary-lighter: #EA8F1A;
+  --ifm-color-primary-light: #E48A15;
+  --ifm-color-primary: #cf7d13;
+  --ifm-color-primary-dark: #BA7111;
+  --ifm-color-primary-darker: #B06A10;
+  --ifm-color-primary-darkest: #91580D;
+}
+
+$theme-colors: (
+  "primary": #cf7d13
+);
+
+@import "~bootstrap/scss/bootstrap";

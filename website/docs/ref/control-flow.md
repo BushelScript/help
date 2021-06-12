@@ -5,15 +5,7 @@ sidebar_label: "Part 2: Control Flow"
 
 See also: [Quick Tutorial](../tutorial/control-flow).
 
-## Conditional expressions
-
-**Syntax**:
-
-    <conditional> :: if <expression>
-                     ( then <expression> | [ then ] <sequence> )
-                     [ else ( <expression> | <sequence> ) ]
-
-**Examples**:
+## [Conditional expressions](grammar#compound)
 
 ```
 if 1 = 2
@@ -27,13 +19,7 @@ else
 end
 ```
 
-## Conditional loops
-
-**Syntax**:
-
-    <conditional-loop> :: repeat while <expression> <sequence>
-
-**Examples**:
+## [Conditional loops](grammar#compound)
 
 ```
 let l be {}
@@ -52,13 +38,7 @@ repeat while that = min
 end
 ```
 
-## Constant-bounded loops
-
-**Syntax**:
-
-    <bounded-loop> :: repeat <expression> times <sequence>
-
-**Examples**:
+## [Constant-bounded loops](grammar#compound)
 
 ```
 let choices be {}
@@ -69,13 +49,7 @@ end
 choices
 ```
 
-## Iterative loops
-
-**Syntax**:
-
-    <iterative-loop> :: repeat for <term-name> in <expression>
-
-**Examples**:
+## [Iterative loops](grammar#compound)
 
 ```
 use app Finder

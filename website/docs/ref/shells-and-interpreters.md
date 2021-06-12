@@ -7,29 +7,11 @@ In true "scripting" fashion, BushelScript allows one to quickly slap together to
 
 See also: [Quick Tutorial](../tutorial/shells-and-interpreters).
 
-## Weave expressions
+## [Weave expressions](grammar#literals)
 
 A _weave expression_ embeds a foreign script within a BushelScript program. When a weave is evaluated, its _body_ is evaluated by the shell or other interpreter specified in its [_hashbang (`#!`) line_](https://en.wikipedia.org/wiki/Shebang_(Unix)).
 
-**Syntax**:
-
-    <weave-expression> ::
-      #! <interpreter> <line-break>
-      <body>
-      [ <weave-expression> | #! ]
-    
-    <interpreter> ::
-      (any valid UTF-8 byte sequence, excluding line breaks)
-    <line-break> ::
-      (one of:
-        U+000D U+000A (CRLF), U+000A ~ U+000D,
-        U+0085, U+2028, or U+2029
-      )
-    <body> :: (any valid UTF-8 byte sequence)
-
 Another `#!` on its own line ends the weave body. If it declares an interpreter, it also begins a new weave.
-
-**Examples**:
 
 ```
 #!/bin/bash

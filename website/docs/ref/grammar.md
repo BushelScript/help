@@ -9,60 +9,34 @@ The following is a compilation of all the **Syntax** sections throughout this re
   \*\*Syntax\*\*:\s*\n(\s+.+?\n)+?\n
 -->
 
-    # To simplify this grammar, we allow rules to be templates.
-    # We write rule R templated on X as R( X ).
-    # Here are some generally applicable templates we'll use:
+The grammar is organized more or less top-down.
+
+## Meta rules
+
+To simplify this grammar, we allow rules to be templates. We write rule `R` templated on `X` as `R( X )`. Here are some generally applicable templates we'll use:
+
     <pump>( R ) :: R [ <pump>( R ) ]
     <pump-with-end>( R, E ) <pump>( E | R )
     <delimited-list>( R, D ) :: R [ <pump>( D R ) ]
     <delimited-list-with-end>( R, D, E ) :: R ( E | <pump-with-end>( D R, E ) )
 
-    # Fundamental notions:
-    <utf-8>( E ) :: (any UTF-8 string that does not match rule E) E
-    <category>( X1, …, Xn, [ NOT E ] ) ::
-      (any UTF-8 grapheme cluster in Unicode General Category X1, or …, or Xn
-       that does not match rule E, if given)
-    <space> :: <category>(Z* NOT <line-break>)
-    <line-break> ::
-      (one of:
-        U+000D U+000A (CRLF), U+000A thru U+000D,
-        U+0085, U+2028, or U+2029
-      )
-    <digits> :: (any sequence of decimal digits 0 thru 9)
+## Blank
 
-    <sequence-delimiter> :: <line-break> [ <pump>( <line-break> | <line-comment> ) ]
-    <line-comment> :: '--' <utf-8>( <line-break> )
+`<blank>` applies zero/one (depending on context) or more times between all syntax elements.
 
-    # <blank> applies zero/one (depending on context) or more times
-    # between all syntax elements:
     <blank> :: <space> | <block-comment>
     <block-comment> :: '--(' <utf-8>( ')--' )
 
-    <term-name> :: delimited-list( <word>, <blank> )
-    <term-name>( E ) :: <delimited-list-with-end>( <word>, <blank>, E )
-    <lazy-term-name> :: <word> | ( '|' <term-name>( '|' ) )
-    <word> :: <utf-8>( <space> | <category>( P*, S* NOT (one of _.-/'’?) ) )
-    
-    <term-role> :: type | property | constant | command | parameter | variable | resource
-    <term-uri>( E ) ::
-      id:<utf-8>( E ) |
-      res:(resource type):<utf-8>( E ) |
-      ae4:(4 characters) | ae8:(8 characters) | ae12:(12 characters) |
-      asid:<utf-8>
-
-    <raw-term> :: '«' <term-role> <space> <term-uri>( '»' )
-    <term>( R ) :: <raw-term>(with role R) | (any term in the current lexicon with role R)
-    <term> :: <term>(any role in <term-role>)
-    <property> ::  <term>(property)
-    <constant> ::  <term>(constant)
-    <command> ::  <term>(command)
-    <parameter> ::  <term>(parameter)
-    <variable> ::  <term>(variable)
-    <resource> ::  <term>(resource)
+## Sequence
 
     <program> :: [ <delimited-list>( <expression>, <sequence-delimiter> ) ]
-    <sequence>( E ) :: <delimited-list-with-end>( <expression>, <sequence-delimiter>, E )
     <sequence> :: <sequence>( end )
+    <sequence>( E ) :: <delimited-list-with-end>( <expression>, <sequence-delimiter>, E )
+    <sequence-delimiter> :: <pump>( <line-break> | <line-comment> )
+    <line-comment> :: '--' <utf-8>( <line-break> )
+
+## Expression
+
     <expression> ::
       <definition> |
       <group> |
@@ -74,6 +48,8 @@ The following is a compilation of all the **Syntax** sections throughout this re
       <compound> |
       <require> |
       <specifier>
+
+## Definition
 
     <definition> ::
       <term-definition> | <variable-definition> | <function-definition>
@@ -87,12 +63,16 @@ The following is a compilation of all the **Syntax** sections throughout this re
     <parameter-spec> ::
       <lazy-term-name> [ <term-name>( '(' ) <expression> ')' | <term-name> ]
 
+## Group
+
     <group> ::
       <grouped-expression> | <list> | <record>
     <grouped-expression> :: '(' <expression> ')'
     <list> :: '{' <delimited-list>( <expression>, ',' ) '}'
     <record> :: '{' <delimited-list>( <record-item>, ',' ) '}'
     <record-item> :: <expression> : <expression>
+
+## Literal
 
     <literal> ::
       <integer> | <real> |
@@ -109,20 +89,29 @@ The following is a compilation of all the **Syntax** sections throughout this re
     <boolean> :: true | false
     <null> :: null
 
+## Reference
+
     <reference> ::
       <last-result> | <current-target> | <variable>
     <last-result> :: that
     <current-target> :: it
 
+## Get/set
+
     <get-set> ::
-      <get> | <set>
+      <get> | <ref> | <set>
     <get> :: get <expression>
+    <ref> :: ref <expression>
     <set> :: set <expression> to <expression>
+
+## Control
 
     <control> ::
       <return> | <raise>
     <return> :: return <expression>
     <raise> :: raise <expression>
+
+## Invocation
 
     <invocation> ::
       <command> [ <expression> ] [ <pump>( <parameter> <expression> ) ] |
@@ -132,6 +121,8 @@ The following is a compilation of all the **Syntax** sections throughout this re
       (one of the operators in the table at Part 2 § Unary Prefix Operators)
     <binary-infix-operator> ::
       (one of the operators in the table at Part 2 § Binary Infix Operators)
+
+## Compound
 
     <compound> ::
       <conditional> | <conditional-loop> | <bounded-loop> | <iterative-loop> |
@@ -154,12 +145,16 @@ The following is a compilation of all the **Syntax** sections throughout this re
     <anonymous-function> ::
       ( take <pump-with-end>( <term-name>( ',' ), <term-name>( do ) ) | do ) <sequence>
 
+## Require
+
     <require> ::
       <require-library> | <require-system> | <require-app> | <require-applescript>
     <require-library> :: use library <term-name>
     <require-system> :: use system [ version ( v | V ) <digits> . <digits> [ . <digits> ] ]
     <require-app> :: use app [ id ] <term-name>
     <require-applescript> :: AppleScript <term-name> at <string>
+
+## Specifier
 
     <specifier> :: ( <element-specifier> | <property> ) [ of <expression> ]
     <element-specifier> ::
@@ -179,3 +174,45 @@ The following is a compilation of all the **Syntax** sections throughout this re
     <all-specifier> :: ( all | every ) <type>
     <range-specifier> :: <type> <expression> ( thru | through ) <expression>
     <filter-specifier> :: <type> ( where | whose ) <expression>
+
+## Term
+
+    <raw-term> :: '«' <term-role> <space> <term-uri>( '»' )
+    <term>( R ) :: <raw-term>(with role R) | (any term in the current lexicon with role R)
+    <term> :: <term>(any role in <term-role>)
+    <property> ::  <term>(property)
+    <constant> ::  <term>(constant)
+    <command> ::  <term>(command)
+    <parameter> ::  <term>(parameter)
+    <variable> ::  <term>(variable)
+    <resource> ::  <term>(resource)
+
+## Term ID
+
+    <term-role> :: type | property | constant | command | parameter | variable | resource
+    <term-uri>( E ) ::
+      id:<utf-8>( E ) |
+      res:(resource type):<utf-8>( E ) |
+      ae4:(4 characters) | ae8:(8 characters) | ae12:(12 characters) |
+      asid:<utf-8>
+
+## Term name
+
+    <term-name> :: delimited-list( <word>, <blank> )
+    <term-name>( E ) :: <delimited-list-with-end>( <word>, <blank>, E )
+    <lazy-term-name> :: <word> | ( '|' <term-name>( '|' ) )
+    <word> :: <utf-8>( <space> | <category>( P*, S* NOT (one of _.-/'’?) ) )
+
+## Fundamental notions
+
+    <utf-8>( E ) :: (any UTF-8 string that does not match rule E) E
+    <category>( X1, …, Xn, [ NOT E ] ) ::
+      (any UTF-8 grapheme cluster in Unicode General Category X1, or …, or Xn
+       that does not match rule E, if given)
+    <space> :: <category>(Z* NOT <line-break>)
+    <line-break> ::
+      (one of:
+        U+000D U+000A (CRLF), U+000A thru U+000D,
+        U+0085, U+2028, or U+2029
+      )
+    <digits> :: (any sequence of decimal digits 0 thru 9)

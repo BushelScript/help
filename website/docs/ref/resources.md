@@ -17,8 +17,6 @@ To this end, a `use` expression declares a script _requirement_. If any such req
 
 [^parse-error]: Unmet requirements are a parse error because a required resource could provide terms used in the script.
 
-**Examples**:
-
 ```
 use application Google Chrome
 ```
@@ -36,8 +34,6 @@ Note that _resource_ and _resource term_ are interchangeable; the latter simply 
 ### Imported terms
 
 Resources are often accompanied by _imported terms_, which they [contain and export](dictionaries).
-
-**Examples**:
 
 ```
 use application Contacts
@@ -74,20 +70,14 @@ Decoding can fail if a suitable data type mapping does not exist. When this occu
 
 ## Types of resources
 
-### Application
+### [Application](grammar#require)
 
-`use app` and `use application` are exactly equivalent, and refer to an application installed on the host system.
-
-**Syntax**:
-
-    use app[lication] [id] <term-name>
+`use app` and `use application` are refer to an application installed on the host system.
 
 - **Imported terms**: The app's AppleScript terminology, if it defines any.
 - **Remote calls**: AppleEvents sent to the application.
   - **Transport format**: _AppleEvent descriptor_
 - **Remote specifiers**: AppleEvent Object Model (AEOM) objects within the application.
-
-**Examples**:
 
 ```
 use app Mail
@@ -102,31 +92,18 @@ tell Google Chrome
 end tell
 ```
 
-### AppleScript
+### [AppleScript](grammar#require)
 
 `use AppleScript` refers to an AppleScript file located somewhere on the host system.
-
-**Syntax**:
-
-    use AppleScript <term-name> at <path-string>
-    
-    <path-string> :: <string-literal>
 
 - **Imported terms**: The script's `sdef` terminology, if it defines any.
 - **Remote calls**: AppleEvents executed in the context of the script.
   - **Transport format**: _AppleEvent descriptor_
 - **Remote specifiers**: None (will produce an error when evaluated).
 
-### System
+### [System](grammar#require)
 
 `use system` or equivalent refers to the operating system in general, or a specific minimum version thereof.
-
-**Syntax**:
-
-    use [ [operating] system | macOS | [Mac] OS [X] | MacOS ]
-      [ version <version> ]
-    
-    <version> :: <digits>.<digits>[.<digits>]
 
 - **Imported terms**: The `System Events` app's AppleScript terminology.
 - **Remote calls**: AppleEvents sent to the `System Events` app.

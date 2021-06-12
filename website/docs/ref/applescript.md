@@ -27,9 +27,7 @@ A handler for which a _command term_ is defined can be [invoked](basic-syntax#co
 
 ### Via user-defined identifiers
 
-Handlers named using AppleScript _user-defined identifiers_ (green text in Script Editor) are not automatically imported as terms into BushelScript, but are still accessible through [raw form](terms#raw-form) terms in the `asid` [UID domain](terms#uid-domains).
-
-**Examples**:
+Handlers named using AppleScript _user-defined identifiers_ (green text in Script Editor) are not automatically imported as terms into BushelScript, but are still accessible through [raw form](terms#raw-form) terms with the `asid` [semantic URI scheme](terms#uri-schemes).
 
 ```
 use AppleScript My Script at "~/Scripts/My Script.scpt"

@@ -7,7 +7,7 @@ As any computer program, BushelScript scripts need to shunt data around to get t
 
 See also: [Quick Tutorial](../tutorial/data-flow).
 
-## Anonymous
+## [Anonymous](grammar#reference)
 
 The `that` keyword refers to the result of the last sequenced expression (i.e., whatever was discarded at the end of the previous line). This is called _anonymous_ data flow because there is no naming involved. It is somewhat analogous to shell script pipes (`|`) or the implicit data flow between actions in Automator or Siri Shortcuts.
 
@@ -15,16 +15,6 @@ The `that` keyword refers to the result of the last sequenced expression (i.e., 
 
 Anonymous data flow is encouraged over the use of variables whenever reasonable. But don't feel restricted to it.
 
-**Syntax**:
-
-    <that> :: that
-
-## Variables
+## [Variables](grammar#definition)
 
 Variables are [terms](terms) defined using a `let` expression. As all terms, they can shadow other terms, and they may consist of multiple words.
-
-**Syntax**:
-
-    <let> :: let <term-name> [ be <initial-value> ]
-    
-    <initial-value> :: <expression>

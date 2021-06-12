@@ -3,37 +3,20 @@ title: "2-1: Terms"
 sidebar_label: "Part 1: Terms"
 ---
 
-_Terms_ are the syntactic particles of any BushelScript program. Each has a name, which identifies it in its [dictionary](dictionaries), a type, which determines its syntactic function, and a UID, which uniquely identifies its runtime semantics.
+_Terms_ are the syntactic particles of BushelScript programs. Terms defined in dictionaries have [names](#term-names). Every term has a [syntactic role](#syntactic-roles), a [semantic URI](#semantic-uris), and contains a [dictionary](dictionaries) which can define more terms.
 
 See also: [Quick Tutorial](../tutorial/terms).
 
-## Term names
+## [Term names](grammar#term-name)
 
-A _term name_ consists of one or more _words_ separated by whitespace and other _word-breaking characters_.
+Each term defined in a dictionary has a name used to refer to it. Syntactically, a _term name_ consists of one or more _words_ separated by whitespace and other _word-breaking characters_. Term names are automatically _normalized_ by the parser by removing leading and trailing whitespace, and replacing any whitespace between words with a single space character. For example, the parser normalizes both <code>&nbsp;term&nbsp;name&nbsp;</code> and <code>term&#9;&nbsp;&#9;name</code> to `term name`.
 
-**Syntax**:
+## [Syntactic roles](grammar#term-id)
 
-    <term-name> :: <word> [ <term-name> ]
-    
-    <word> :: (any valid UTF-8 byte sequence,
-               terminated by one of the following characters:
-                 - Whitespace (Unicode General Category Z*, U+000A ~ U+000D, and U+0085)
-                 - Punctuation (Unicode General Category P*)
-                 - Symbols (Unicode General Category S*)
-                 not including: _ . - / ' ’
-              )
+Each term has a _syntactic role_, which determines its function.
 
-### Normalization
-
-Term names are automatically _normalized_ by the parser. Normalization removes leading and trailing whitespace, and replaces any whitespace between words with a single space character.
-
-For example, the parser normalizes both <code>&nbsp; hello&#9;world&nbsp;</code> and <code>hello&#9;&nbsp;&#9;world&nbsp;&#9;&nbsp;</code> to `hello world`.
-
-## Term types
-
-| Term type  | `define` syntax | Syntactic function                                                                                            |
+| Term role  | `define` syntax | Syntactic function                                                                                            |
 |------------|-----------------|---------------------------------------------------------------------------------------------------------------|
-| Dictionary | `dictionary`    | Exists exclusively to contain a [dictionary](dictionaries) for organizational purposes.                       |
 | Type       | `type`          | Can create a `type` object or a variety of [specifiers](specifiers#element-specifiers).                       |
 | Property   | `property`      | Creates a property specifier.                                                                                 |
 | Constant   | `constant`      | Evaluates to a `constant` object representing itself; models symbolic constants or AppleScript "enumerators". |
@@ -42,36 +25,32 @@ For example, the parser normalizes both <code>&nbsp; hello&#9;world&nbsp;</code>
 | Variable   | `variable`      | Refers to stored data; usually defined using a [`let` expression](data-flow#variables).                       |
 | Resource   | `resource`      | [Refers to an imported resource](resources#resource-terms).                                                   |
 
-## Term UIDs
+## Semantic URIs
 
-Every term has a _unique identifier_ (_UID_) which identifies its semantics at runtime. A UID is composed of a domain and a piece of data that uniquely identifies it within its domain. The set of allowable data values is determined by the domain.
+Each term also has a _semantic URI_, which identifies its runtime meaning. As usual, a URI consists of `scheme:identifying-data`. The scheme determines which data values are allowed and how they are interpreted at runtime.
 
-### UID domains
+### URI schemes
 
-| Domain        | Description                                                       | Data format                                  | Example UIDs in this domain                                                                                                                      |
+| Scheme        | Description                                                       | Data format                                  | Example URIs with this scheme                                                                                                                    |
 |---------------|-------------------------------------------------------------------|----------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| `id`          | BushelScript native identifier (dervied from qualified term name) | Any number of term names separated by colons | `id:variable name`<br></br>`id:My ibrary:my type:my property`                                                                                            |
+| `res`         | Resource ID                                                       | See [resource types](resources#types-of-resources) | `res:library:My Library`<br></br>`res:system`<br></br>`res:app:System Preferences`<br></br>`res:appid:com.apple.Safari`<br></br> |
 | `ae4`         | Four-byte AppleEvent code                                         | 4 MacRoman characters                        | `ae4:cwin`                                                                                                                                       |
 | `ae8`         | AE event class code, AE event ID code                             | 8 MacRoman characters                        | `ae8:coresetd`                                                                                                                                   |
 | `ae12`        | AE event class code, AE event ID code, AE parameter code          | 12 MacRoman characters                       | `ae12:coresetddata`                                                                                                                              |
-| `id`          | BushelScript native identifier (dervied from qualified term name) | Any number of term names separated by colons | `id:variable name`<br></br>`id:Dictionary:type:identifier`                                                                                            |
-| `res`         | Resource ID                                                       | <code>(system &#124;app&#124;appid &#124;as):&lt;data&gt;</code>     | `res:system`<br></br>`res:app:System Preferences`<br></br>`res:appid:com.apple.Safari`<br></br>`res:as:/Users/user/Scripts/Script.scpt` |
 | `asid`        | AppleScript user identifier                                       | Any valid AppleScript user identifier        | `asid:an_applescript_handler`<br></br>`asid:AnAppleScriptHandler`                                                                                     |
-| `var(plural)` | Plural variant                                                    | Any UID                                      | `var(plural):ae4:cwin`                                                                                                                           |
-| ────          | ───────                                                           | ──────                                       |                                                                                                                                                  |
 
-## Typed UIDs (TUIDs)
+## Term IDs
 
-A _typed UID_ (_TUID_) is the identifying combination of a term UID and a term type. A TUID unambiguously specifies a particular UID (and its particular semantics) in contexts where multiple types of terms might happen to share UIDs (but not semantics).
+A _term ID_ is a combination of a term role and a semantic URI. Term IDs are used in contexts where multiple types of terms might happen to share the same URI (usually, but not always, with the `ae4` scheme).
 
 ## Overlapping terms
 
-Two or more terms _overlap_ each other if they have the same name, TUID, or both.
+Two or more terms _overlap_ each other if they have the same name, ID, or both.
 
 ### Synonyms
 
-Overlapping terms with the same TUID but different names are _synonyms_ of each other. Replacing a term with one of its synonyms yields no change in program behavior.
-
-**Examples**:
+Overlapping terms with the same ID but different names are _synonyms_ of each other. Replacing a term with one of its synonyms yields no change in program behavior.
 
 ```
 4 -- Can be any expression.
@@ -83,47 +62,24 @@ The result is always `true` because `sqrt` and `square root` have identical sema
 
 ### Homonyms
 
-Overlapping terms with identical names but different TUIDs are _homonyms_ of each other. Such identical-looking terms with different behavior are [surprising](https://en.wikipedia.org/wiki/Principle_of_least_astonishment) and should usually be avoided.
-
-Note that homonyms are necessarily defined in different [dictionaries](dictionaries), since a dictionary accessibly maps a name to at most one term.
+Overlapping terms with identical names but different IDs are _homonyms_ of each other. Such identical-looking terms with different behavior should be avoided if possible. Note that homonyms are necessarily defined in different [dictionaries](dictionaries), since a dictionary accessibly maps a name to at most one term.
 
 ### Identical terms
 
-Terms that overlap in both name and TUID are called _identical terms_. Identical terms can be used interchangeably like synonyms, but unlike homonyms they cause minimal confusion.
+Terms from different dictionaries that overlap in both name and ID are _identical terms_. Identical terms can be used interchangeably like synonyms, but unlike homonyms, they cause minimal confusion. However, they may not have the same dictionary.
 
-While identical terms have the same name and TUID, they are not guaranteed to contain the same dictionary.
+## [Raw form](grammar#term)
 
-Identical terms cannot be defined in the same dictionary, since such terms would simply coalesce into one.
+_Raw form_ is special syntax that creates an anonymous term by stating its syntactic role and semantic URI inline. Terms created this way have the same syntactic function as any other term of their role.
 
-## Raw form
+This example refers to a term that's already defined (displayed with its usual name at runtime):
 
-_Raw form_ is special syntax that creates an anonymous term by specifying its type and UID inline. Terms created this way have the same syntactic function as any other term of their type.
-
-**Syntax**:
-
-    <raw-term> :: « <term-type> <term-uid> »
-    
-    <term-type> ::
-      ( dictionary | type | property | constant | command | parameter |
-        variable | resource )
-
-**Examples**:
-
-
+```
 ref «type ae4:cwin» --> window
-ref «type var(plural):ae4:cwin» --> windows
 ```
 
-This example refers to already-defined terms, which are displayed with their regular names at runtime.
+`«type ae4:abcd»` is a not typically a defined term, but raw form can construct it on the fly. This is useful to quickly fill gaps in AppleScript terminology.
 
-
-«resource res:appid:com.apple.Safari» --> application id "com.apple.Safari"
 ```
-
-If a resource's [requirement](resources#requirements) is not satisfied, a parse error will result as usual, although the error message may be less clear.
-
-
 «type ae4:abcd» --> «type ae4:abcd»
 ```
-
-`«type ae4:abcd»` is a not a defined term, but raw form can construct it on the fly. This is useful to quickly fill gaps in AppleScript terminology.

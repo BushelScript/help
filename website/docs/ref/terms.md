@@ -66,7 +66,7 @@ Overlapping terms with identical names but different IDs are _homonyms_ of each 
 
 ### Identical terms
 
-Terms from different dictionaries that overlap in both name and ID are _identical terms_. Identical terms can be used interchangeably like synonyms, but unlike homonyms, they cause minimal confusion. However, they may not have the same dictionary.
+Terms from different dictionaries that overlap in both name and ID are _identical terms_. Identical terms can be used interchangeably like synonyms, but unlike homonyms, they cause minimal confusion. However, they might not have the same dictionary.
 
 ## [Raw form](grammar#term)
 

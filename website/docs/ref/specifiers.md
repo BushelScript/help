@@ -27,7 +27,7 @@ An element relation exists based on an element type, an indexing form, and zero 
 
 ### [Element specifiers](grammar#specifier)
 
-An _element specifier_ describes an element relation. The syntax varies by indexing form, but always includes a [type term](terms#term-types). Reciprocally, the syntactic form used determines the specifier's indexing form.
+An _element specifier_ describes an element relation. The syntax varies by indexing form, but always includes a [type term](terms#term-roles). Reciprocally, the syntactic form used determines the specifier's indexing form.
 
 ## Indexing forms
 
@@ -167,21 +167,7 @@ windows where name contains "Google"
 
 ## Property relations
 
-A _property relation_ relates a _host object_ to a _value object_ via a [property term](terms#term-types). A given property relation either serves to describe the host object, or is simply related and auxiliary to it.
-
-_Property_ and _property relation_ are interchangeable terms.
-
-### Attributive properties
-
-A property relation is _attributive_ when it serves to describe its host object. For instance, the `name` property often ascribes its host a user-friendly name string.
-
-### Relative properties
-
-A property relation is _relative_ when it relates its host to its value but does not serve to describe the host. Relative properties effectively serve as individual named element relations.
-
-A property can typically be called relative if it refers to an object that cannot be described as a simple "value"; that is, if it refers to a text box or a table cell, and not a string or an integer.
-
-For example, the Safari application's `window` type declares the property `current tab`, with type `tab`. The tab deemed "current" in a web browser is prone to change at a moment's notice, and is an element of the window rather than a descriptive attribute. This property is thus a relative property.
+A _property relation_ relates a _host object_ to a _value object_ via a [property term](terms#term-roles). While element relations are one-to-many, property relations are one-to-one. Property relations often describe the host object with number or string values, although they can also act as references to other complex objects.
 
 ### [Property specifiers](grammar#specifier)
 

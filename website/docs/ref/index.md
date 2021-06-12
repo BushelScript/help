@@ -32,31 +32,6 @@ BushelScript is a macOS scripting language designed with the following principal
 
 This reference describes version **0.4** of the BushelScript software package. Syntax specifications and examples refer to the "BushelScript English"/`bushelscript_en` language module.
 
-## Grammar format
+## Language grammar
 
-A loose grammar is defined by this reference, in sections with the **Syntax** boldface callout. The form is similar to [BNF](https://en.wikipedia.org/wiki/Backus–Naur_form):
-
-- Anything inside `<` and `>` refers to a "rule" or "production", i.e., a named grammar element.
-- `::` denotes the definition of a rule.
-- Any non-[`<` `>` `(` `)` `[` `]` `|` `::` whitespace] characters occur literally.
-- `(` and `)` group elements.
-- Elements inside `[` and `]` may or may not occur. Whether they occur can alter semantics.
-- A `|` between two elements indicates that either may occur. Which one occurs can alter semantics.
-
-To simplify the grammar, we allow rules to be templates. We write rule `R` templated on `X` as `R( X )`.
-
-For example:
-
-    <foo> :: foo [ <bar> ]
-    <bar> :: bar ( baz | <bar> )
-
-| Source code     | Matches `<foo>`? |
-|-----------------|------------------|
-| foo             | ✓                |
-| bar             | ✗                |
-| foo bar         | ✗                |
-| foo baz         | ✗                |
-| foo bar baz     | ✓                |
-| foo bar bar baz | ✓                |
-
-The full grammar comprises [Appendix B](grammar).
+An incomplete formal grammar is defined by this reference in [Appendix B](grammar). When applicable, section headings throughout this reference act as links to relevant grammar rules.

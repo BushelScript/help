@@ -3,17 +3,39 @@ title: "B: Grammar"
 sidebar_label: "B: Grammar"
 ---
 
-The following is a compilation of all the **Syntax** sections throughout this reference, alongside some more fundamental definitions. Informal notions are defined with `(parentheses)`. Please note that this is _not_ a complete formal specification, and devising one is not a goal at the moment.
+The following is an incomplete formal grammar for the `bushelscript_en` language. The form is similar to [BNF](https://en.wikipedia.org/wiki/Backus–Naur_form):
 
-<!-- Search regex:
-  \*\*Syntax\*\*:\s*\n(\s+.+?\n)+?\n
--->
+- Anything inside `<` and `>` refers to a "rule" or "production", i.e., a named grammar element.
+- `::` denotes the definition of a rule.
+- Any non-[`<` `>` `(` `)` `[` `]` `|` `::` whitespace] characters occur literally.
+- `(` and `)` group elements.
+- Elements inside `[` and `]` may or may not occur. Whether they occur can alter semantics.
+- A `|` between two elements indicates that either may occur. Which one occurs can alter semantics.
 
-The grammar is organized more or less top-down.
+To simplify the grammar, we allow rules to be templates. We write rule `R` templated on `X` as `R( X )`.
+
+For example:
+
+    <foo> :: foo [ <bar> ]
+    <bar> :: bar ( baz | <bar> )
+
+| Source code     | Matches `<foo>`? |
+|-----------------|------------------|
+| foo             | ✓                |
+| bar             | ✗                |
+| foo bar         | ✗                |
+| foo baz         | ✗                |
+| foo bar baz     | ✓                |
+| foo bar bar baz | ✓                |
+
+
+Some informal notions are defined in `(parentheses)`. Please note that this only a good approximation of the language syntax, _not_ a complete grammar. Devising one is not a goal at the moment.
+
+The rules are organized more or less top-down.
 
 ## Meta rules
 
-To simplify this grammar, we allow rules to be templates. We write rule `R` templated on `X` as `R( X )`. Here are some generally applicable templates we'll use:
+As a reminder, to simplify this grammar, we allow rules to be templates, writing rule `R` templated on `X` as `R( X )`. Here are some generally applicable templates we'll use:
 
     <pump>( R ) :: R [ <pump>( R ) ]
     <pump-with-end>( R, E ) <pump>( E | R )

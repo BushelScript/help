@@ -1,5 +1,3 @@
----
----
 #!/bin/bash
 
 outfile="ref/$1.md"
@@ -12,8 +10,8 @@ fi
 
 cat <<END > "$outfile"
 ---
-title: $2-$3: $4
-sidebar_label: Part $3: $4
+title: '$2-$3: $4'
+sidebar_label: 'Part $3: $4'
 ---
 
 See also: [Quick Tutorial](../tutorial/$1).

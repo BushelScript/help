@@ -1,5 +1,3 @@
----
----
 #!/bin/bash
 
 ./make-ref-page.sh "$@"

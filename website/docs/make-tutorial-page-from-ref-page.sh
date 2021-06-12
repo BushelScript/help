@@ -1,5 +1,3 @@
----
----
 #!/bin/bash
 
 infile="ref/$1.md"

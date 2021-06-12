@@ -13,7 +13,7 @@ _Relations_ _relate_ objects to each other, connecting them through an object gr
 
 Relations are not themselves syntactic elements, but exist at runtime between objects and are described by specifiers.
 
-## [Chaining](grammar#specifier)
+## [Chaining](../grammar#specifier)
 
 A specifier _chains_ together descriptions of relations, starting from a concrete _root object_.
 
@@ -25,7 +25,7 @@ Objects are often organized into a hierarchical tree structure through _element 
 
 An element relation exists based on an element type, an indexing form, and zero to two _identifying objects_ (depending on the indexing form).
 
-### [Element specifiers](grammar#specifier)
+### [Element specifiers](../grammar#specifier)
 
 An _element specifier_ describes an element relation. The syntax varies by indexing form, but always includes a [type term](terms#term-roles). Reciprocally, the syntactic form used determines the specifier's indexing form.
 
@@ -33,7 +33,7 @@ An _element specifier_ describes an element relation. The syntax varies by index
 
 Each element relation has an _indexing form_ that specifies how it selects objects.
 
-### [Simple](grammar#specifier)
+### [Simple](../grammar#specifier)
 
 Simple form is a convenience syntax for either Name or Index form, depending on the type of identifying object used.
 
@@ -44,7 +44,7 @@ document "Untitled"
 window 1
 ```
 
-### [Name](grammar#specifier)
+### [Name](../grammar#specifier)
 
 Name form specifies a single element according to the value of its `ae4:pnam` (`name`) property.
 
@@ -54,7 +54,7 @@ Name form specifies a single element according to the value of its `ae4:pnam` (`
 document named "Untitled"
 ```
 
-### [Index](grammar#specifier)
+### [Index](../grammar#specifier)
 
 Index form specifies a single element according to the value of its `ae4:pidx` (`index`) property.
 
@@ -64,7 +64,7 @@ Index form specifies a single element according to the value of its `ae4:pidx` (
 window index 1
 ```
 
-### [ID](grammar#specifier)
+### [ID](../grammar#specifier)
 
 ID form specifies a single element according to the value of its <code>ae4:ID&nbsp;&nbsp;</code> (`id`) property.
 
@@ -78,7 +78,7 @@ let docid be id of that --> 123
 document id docid --> document id 123
 ```
 
-### [Absolute positioning](grammar#specifier)
+### [Absolute positioning](../grammar#specifier)
 
 Absolute Positioning form specifies a single element according to its ordinal position within a container.
 
@@ -98,7 +98,7 @@ last window
 some window
 ```
 
-### [Relative positioning](grammar#specifier)
+### [Relative positioning](../grammar#specifier)
 
 Relative Positioning form specifies a single element according to its ordinal position relative to another element in the same container.
 
@@ -122,7 +122,7 @@ To form a Relative Positioning specifier under the current default target, `it` 
 window after it
 ```
 
-### [All](grammar#specifier)
+### [All](../grammar#specifier)
 
 All form specifies every element in a container.
 
@@ -134,7 +134,7 @@ all windows
 windows
 ```
 
-### [Range](grammar#specifier)
+### [Range](../grammar#specifier)
 
 Range form specifies elements within a range of values in a container. The test used to determine whether an object is _in the range_ depends on the element and container types, and possibly the type of the identifying objects used.
 
@@ -145,7 +145,7 @@ paragraph 1 thru 2
 windows 2 through -1
 ```
 
-### [Filter](grammar#specifier)
+### [Filter](../grammar#specifier)
 
 Filter form specifies elements that pass a certain custom test.
 
@@ -169,7 +169,7 @@ windows where name contains "Google"
 
 A _property relation_ relates a _host object_ to a _value object_ via a [property term](terms#term-roles). While element relations are one-to-many, property relations are one-to-one. Property relations often describe the host object with number or string values, although they can also act as references to other complex objects.
 
-### [Property specifiers](grammar#specifier)
+### [Property specifiers](../grammar#specifier)
 
 A _property specifier_ describes a property relation, and is created by simply naming a property term.
 
@@ -195,10 +195,10 @@ The following are all the contexts where specifiers are _not_ implicitly evaluat
 - The parent expression of a specifier phrase; e.g., `name of window 1` (the final specifier will be evaluated, but `window 1` will not).
 - Filter test expressions; e.g., `windows where name is "Untitled"` (the final specifier will be evaluated, but `name` will not).
 
-### [Explicit evaluation](grammar#getset)
+### [Explicit evaluation](../grammar#getset)
 
 A specifier can be _explicitly evaluated_ with a `get` expression. This always results in evaluation, even in contexts where implicit evaluation is disabled.
 
-### [Reference expressions](grammar#getset)
+### [Reference expressions](../grammar#getset)
 
 Implicit evaluation can be contextually disabled with a `ref` expression. This always creates a `specifier` object, which can then be sent in [remote calls](resources#remote-calls) or evaluated later.

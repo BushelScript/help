@@ -7,7 +7,7 @@ In true "scripting" fashion, BushelScript allows one to quickly slap together to
 
 See also: [Quick Tutorial](../tutorial/shells-and-interpreters).
 
-## [Weave expressions](grammar#literals)
+## [Weave expressions](../grammar#literals)
 
 A _weave expression_ embeds a foreign script within a BushelScript program. When a weave is evaluated, its _body_ is evaluated by the shell or other interpreter specified in its [_hashbang (`#!`) line_](https://en.wikipedia.org/wiki/Shebang_(Unix)).
 

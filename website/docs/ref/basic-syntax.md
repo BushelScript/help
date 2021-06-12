@@ -11,29 +11,29 @@ See also: [Quick Tutorial](../tutorial/basic-syntax).
 
 _Comments_ are pieces of text embedded in a program that are intended only to aid human readers. They have no formal semantic effect on the program; adding or removing comments does not change what a program does.
 
-### [Line comments](grammar#sequence)
+### [Line comments](../grammar#sequence)
 
 _Line comments_ begin with `--` and continue to the end of their line.
 
-### [Block comments](grammar#blank)
+### [Block comments](../grammar#blank)
 
 _Block comments_ begin with `--(` and continue through to new lines, until either `)--` or the end of the program is reached.
 
 ## Values
 
-### [Numbers](grammar#literal)
+### [Numbers](../grammar#literal)
 
-#### [`integer`s](grammar#literal)
+#### [`integer`s](../grammar#literal)
 
 Positive and negative whole numbers, no fractions. Any numeric literal in the appropriate range and without a decimal point produces an `integer`. `integer`s store signed 64-bit values, which means -2⁶³ ≤ 𝑥 < 2⁶³ for all `integer`s 𝑥.
 
-#### [`real`s](grammar#literal)
+#### [`real`s](../grammar#literal)
 
 Positive and negative numbers with fractions allowed. A numeric literal with a `.` decimal point produces a `real`.
 
 `real`s use double-precision [floating-point](https://en.wikipedia.org/wiki/Floating-point_arithmetic) format. This provides a huge range of representable values, but can cause imprecision in base-10 calculations: `real`s are stored as 𝑠 × 2ⁿ, where 𝑠 and 𝑛 are integers, but not all decimal numbers can be represented exactly in this format.
 
-### [`string`](grammar#literal)
+### [`string`](../grammar#literal)
 
 A `string` is a sequence of Unicode characters. If it's text, it goes in a `string`.
 
@@ -43,7 +43,7 @@ A `string` is a sequence of Unicode characters. If it's text, it goes in a `stri
 "😀😃😄" -- length 3 (grapheme clusters, not UTF-16 units)
 ```
 
-### [`boolean`, truth and falsity](grammar#literal)
+### [`boolean`, truth and falsity](../grammar#literal)
 
 A `boolean` represents the answer to a yes-or-no question. It can be reacted to by [control flow constructs](control-flow) or factored into [logical operations](#binary-operators).
 
@@ -54,7 +54,7 @@ true and false --> false
 false or true --> true
 ```
 
-### [`null`, the absence of a value](grammar#literal)
+### [`null`, the absence of a value](../grammar#literal)
 
 `null` indicates the absence of a meaningful value. Its effective semantics depend on the context of its use.
 
@@ -98,7 +98,7 @@ The output of a command is called its _result_. It is available to the caller af
 
 Commands often have _side-effects_; that is, they modify outside state in addition to producing a result. Side-effects are necessary for a program to really do anything, but they can also make code harder to debug. Commands without side-effects are analogous to mathematical functions.
 
-### [Command invocations](grammar#invocation)
+### [Command invocations](../grammar#invocation)
 
 A command is _invoked_ by naming it. This produces a _command invocation_ expression, which passes _arguments_ to the command's parameters and evaluates to its result.
 
@@ -113,7 +113,7 @@ To be as clear and precise as possible, here is a table summarizing what each co
 | parameter           | A term with which argument values can be associated in an invocation or call. e.g., `new` in `make new window`. |
 | argument            | An input value from the point of view of an invocation. Is ephemeral and constant on a per-invocation basis.   |
 
-## [Operators](grammar#invocation)
+## [Operators](../grammar#invocation)
 
 _Operators_ are built-in commands that hvae no side-effects and special invocation syntax.
 
@@ -123,7 +123,7 @@ Each operator has an assigned _precedence_ ranking. This will be elaborated on a
 
 _Unary operators_ require one operand.
 
-#### [Unary prefix operators](grammar#invocation)
+#### [Unary prefix operators](../grammar#invocation)
 
 _Unary prefix operators_ are positioned before their operand.
 
@@ -135,7 +135,7 @@ _Unary prefix operators_ are positioned before their operand.
 
 _Binary operators_ require two operands.
 
-#### [Binary infix operators](grammar#invocation)
+#### [Binary infix operators](../grammar#invocation)
 
 _Binary infix operators_ are positioned in-between their operands.
 

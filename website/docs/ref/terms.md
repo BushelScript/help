@@ -7,11 +7,11 @@ _Terms_ are the syntactic particles of BushelScript programs. Terms defined in d
 
 See also: [Quick Tutorial](../tutorial/terms).
 
-## [Term names](grammar#term-name)
+## [Term names](../grammar#term-name)
 
 Each term defined in a dictionary has a name used to refer to it. Syntactically, a _term name_ consists of one or more _words_ separated by whitespace and other _word-breaking characters_. Term names are automatically _normalized_ by the parser by removing leading and trailing whitespace, and replacing any whitespace between words with a single space character. For example, the parser normalizes both <code>&nbsp;term&nbsp;name&nbsp;</code> and <code>term&#9;&nbsp;&#9;name</code> to `term name`.
 
-## [Syntactic roles](grammar#term-id)
+## [Syntactic roles](../grammar#term-id)
 
 Each term has a _syntactic role_, which determines its function.
 
@@ -68,7 +68,7 @@ Overlapping terms with identical names but different IDs are _homonyms_ of each 
 
 Terms from different dictionaries that overlap in both name and ID are _identical terms_. Identical terms can be used interchangeably like synonyms, but unlike homonyms, they cause minimal confusion. However, they might not have the same dictionary.
 
-## [Raw form](grammar#term)
+## [Raw form](../grammar#term)
 
 _Raw form_ is special syntax that creates an anonymous term by stating its syntactic role and semantic URI inline. Terms created this way have the same syntactic function as any other term of their role.
 

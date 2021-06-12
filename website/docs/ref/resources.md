@@ -70,7 +70,7 @@ Decoding can fail if a suitable data type mapping does not exist. When this occu
 
 ## Types of resources
 
-### [Application](grammar#require)
+### [Application](../grammar#require)
 
 `use app` and `use application` are refer to an application installed on the host system.
 
@@ -92,7 +92,7 @@ tell Google Chrome
 end tell
 ```
 
-### [AppleScript](grammar#require)
+### [AppleScript](../grammar#require)
 
 `use AppleScript` refers to an AppleScript file located somewhere on the host system.
 
@@ -101,7 +101,7 @@ end tell
   - **Transport format**: _AppleEvent descriptor_
 - **Remote specifiers**: None (will produce an error when evaluated).
 
-### [System](grammar#require)
+### [System](../grammar#require)
 
 `use system` or equivalent refers to the operating system in general, or a specific minimum version thereof.
 

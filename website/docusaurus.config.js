@@ -66,32 +66,6 @@ module.exports={
     },
     "footer": {
       "links": [
-        {
-          "title": "Links",
-          "items": [
-            {
-              "label": "Main Site",
-              "href": "https://bushelscript.github.io"
-            },
-            {
-              "label": "GitHub",
-              "href": "https://github.com/BushelScript/BushelScript"
-            }
-          ]
-        },
-        {
-          "title": "More Help",
-          "items": [
-            {
-              "label": "GitHub Discussions",
-              "href": "https://github.com/BushelScript/BushelScript/discussions"
-            },
-            {
-              "label": "Discord",
-              "href": "https://discord.gg/xdyCK9t"
-            }
-          ]
-        }
       ],
       "logo": {
       }

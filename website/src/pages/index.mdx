@@ -5,29 +5,61 @@ title: BushelScript Help
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 
-export const fontSize = '20px';
+import '../css/index.css'
 
-<div style={{textAlign: 'center'}}>
+<header className='center' style={{marginBottom: '2vh'}}>
   <h1>BushelScript Help</h1>
-  <p style={{fontSize: fontSize}}>Select a section to get started:</p>
-</div>
+</header>
 
+<DocSectionList>
+  <p className='center'>BushelScript is a macOS scripting language with unparalleled connective power.</p>
+  <DocSectionLink to='https://bushelscript.github.io/about/' title='About BushelScript'/>
+</DocSectionList>
 
 export const DocSectionLink = props => {
   return (
-    <div style={{display: 'flex', flexFlow: 'row wrap', justifyContent: 'center', alignItems: 'flex-end', margin: '10px', marginTop: '0'}}>
-      <Button style={{marginRight: '10px'}} variant='outline-primary' href={props.to}>{props.title}</Button>
-      <p style={{lineHeight: '0.5em'}}>{props.description}</p>
+    <div className='DocSectionLink'>
+      <Button variant='outline-primary' href={props.to}>{props.title}</Button>
+      {props.description && <p className='Description'>{props.description}</p>}
     </div>
   );
 };
 
-<div style={{display: 'flex', flexFlow: 'column wrap', justifyContent: 'center', alignItems: 'flex-start'}}>
-  <DocSectionLink to='docs/tutorial' title='Quick Tutorial' description='Guide designed to teach the language quickly and gloss over some details'/>
+export const DocSectionList = props => {
+  return (
+    <div className='center' style={{display: 'flex', flexFlow: 'column', alignItems: 'flex-start'}}>
+      {props.children}
+    </div>
+  );
+};
+
+<hr/>
+<h2 className='center'>Documentation</h2>
+
+<DocSectionList>
+  <DocSectionLink to='docs/tutorial' title='Quick Tutorial' description='Teaches the language quickly and glosses over some details'/>
   <DocSectionLink to='docs/ref' title='Reference' description='Detailed language and runtime documentation'/>
   <DocSectionLink to='docs/integration' title='Integration' description='Additional guides on integrating BushelScript with existing tools'/>
   <DocSectionLink to='docs/internal' title='Internals' description='Documentation for file formats, the language module API, etc.'/>
-</div>
+</DocSectionList>
 
-<br></br>
-<p style={{textAlign: 'center', fontSize: fontSize}}>Additional resources are linked in the footer.</p>
+<br/>
+
+<p className='center'>Additional resources available in the footer.</p>
+
+<hr/>
+<h2 className='center'>Discussion</h2>
+
+<DocSectionList>
+  <DocSectionLink to='https://github.com/BushelScript/BushelScript/discussions' title='GitHub Discussions' description='A public forum board for Q&A and other relevant discussions'/>
+  <DocSectionLink to='https://discord.gg/xdyCK9t' title='Discord' description='An instant chat community not indexed by search engines'/>
+</DocSectionList>
+
+
+<hr/>
+<h2 className='center'>Links</h2>
+
+<DocSectionList>
+  <DocSectionLink to='https://bushelscript.github.io' title='Main Site' description=''/>
+  <DocSectionLink to='https://github.com/BushelScript/BushelScript' title='Source Code on GitHub' description=''/>
+</DocSectionList>

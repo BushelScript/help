@@ -5,4 +5,4 @@ sidebar_label: "Part 1: Functions"
 
 _Not written yet._
 
-See also: [Quick Tutorial](../tutorial/functions).
+See also: [Quick Tutorial](/docs/tutorial/functions).

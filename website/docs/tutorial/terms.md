@@ -5,4 +5,4 @@ sidebar_label: "Step 1: Terms"
 
 _Not written yet._
 
-See also: [Language Reference](../ref/terms).
+See also: [Language Reference](/docs/ref/terms).

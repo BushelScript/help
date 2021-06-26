@@ -5,7 +5,7 @@ sidebar_label: "Step 2: Basic Syntax"
 
 Syntax is the structure of language. Programming languages have stricter syntactic rules than natural languages, and BushelScript is no exception.
 
-See also: [Language Reference](../ref/basic-syntax).
+See also: [Language Reference](/docs/ref/basic-syntax).
 
 ## Comments
 
@@ -155,4 +155,4 @@ _Operators_ are special commands that are called differently and have no side-ef
 not (true and false)
 ```
 
-For a full list, consult the [Language Reference](../ref/basic-syntax#operators).
+For a full list, consult the [Language Reference](/docs/ref/basic-syntax#operators).

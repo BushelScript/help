@@ -5,4 +5,4 @@ sidebar_label: "Step 1: Interfacing with AppleScript"
 
 _Not written yet._
 
-See also: [Language Reference](../ref/applescript).
+See also: [Language Reference](/docs/ref/applescript).

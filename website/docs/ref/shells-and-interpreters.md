@@ -5,9 +5,9 @@ sidebar_label: "Part 2: Shells and Interpreters"
 
 In true "scripting" fashion, BushelScript allows one to quickly slap together tons of different pieces of functionality to get the job done.
 
-See also: [Quick Tutorial](../tutorial/shells-and-interpreters).
+See also: [Quick Tutorial](/docs/tutorial/shells-and-interpreters).
 
-## [Weave expressions](../grammar#literals)
+## [Weave expressions](/docs/ref/grammar#literals)
 
 A _weave expression_ embeds a foreign script within a BushelScript program. When a weave is evaluated, its _body_ is evaluated by the shell or other interpreter specified in its [_hashbang (`#!`) line_](https://en.wikipedia.org/wiki/Shebang_(Unix)).
 

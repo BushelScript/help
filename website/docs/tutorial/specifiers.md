@@ -5,4 +5,4 @@ sidebar_label: "Step 1: Specifiers"
 
 _Not written yet._
 
-See also: [Language Reference](../ref/specifiers).
+See also: [Language Reference](/docs/ref/specifiers).

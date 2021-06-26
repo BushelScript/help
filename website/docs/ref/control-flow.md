@@ -3,9 +3,9 @@ title: "5-2: Control Flow"
 sidebar_label: "Part 2: Control Flow"
 ---
 
-See also: [Quick Tutorial](../tutorial/control-flow).
+See also: [Quick Tutorial](/docs/tutorial/control-flow).
 
-## [Conditional expressions](../grammar#compound)
+## [Conditional expressions](/docs/ref/grammar#compound)
 
 ```
 if 1 = 2
@@ -19,7 +19,7 @@ else
 end
 ```
 
-## [Conditional loops](../grammar#compound)
+## [Conditional loops](/docs/ref/grammar#compound)
 
 ```
 let l be {}
@@ -38,7 +38,7 @@ repeat while that = min
 end
 ```
 
-## [Constant-bounded loops](../grammar#compound)
+## [Constant-bounded loops](/docs/ref/grammar#compound)
 
 ```
 let choices be {}
@@ -49,7 +49,7 @@ end
 choices
 ```
 
-## [Iterative loops](../grammar#compound)
+## [Iterative loops](/docs/ref/grammar#compound)
 
 ```
 use app Finder

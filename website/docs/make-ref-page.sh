@@ -14,6 +14,6 @@ title: '$2-$3: $4'
 sidebar_label: 'Part $3: $4'
 ---
 
-See also: [Quick Tutorial](../tutorial/$1).
+See also: [Quick Tutorial](/docs/tutorial/$1).
 END
 mate "$outfile"

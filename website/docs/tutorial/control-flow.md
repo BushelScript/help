@@ -5,7 +5,7 @@ sidebar_label: "Step 2: Control Flow"
 
 _Not written yet._
 
-See also: [Language Reference](../ref/control-flow).
+See also: [Language Reference](/docs/ref/control-flow).
 
 ## The default target
 

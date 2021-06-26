@@ -5,7 +5,7 @@ sidebar_label: "Step 1: Functions"
 
 _Not written yet._
 
-See also: [Language Reference](../ref/functions).
+See also: [Language Reference](/docs/ref/functions).
 
 ## Early return
 

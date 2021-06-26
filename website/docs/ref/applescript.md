@@ -7,7 +7,7 @@ AppleScript has been in use for decades, and with such usage comes a large back 
 
 If you find yourself calling AppleScript because of a deficiency in BushelScript's AppleEvent functionality, please [file a bug report](https://github.com/BushelScript/BushelScript/issues/new) describing how BushelScript could be improved. Thanks!
 
-See also: [Quick Tutorial](../tutorial/applescript).
+See also: [Quick Tutorial](/docs/tutorial/applescript).
 
 ## Importing scripts
 

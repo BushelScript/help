@@ -5,7 +5,7 @@ sidebar_label: "Part 1: User Interaction"
 
 BushelScript supports custom-built GUI commands as its primary mode of user interaction. Limited CLI interactions are also supported. Speech-based interactions are planned but have low priority.
 
-See also: [Quick Tutorial](../tutorial/user-interaction).
+See also: [Quick Tutorial](/docs/tutorial/user-interaction).
 
 ## GUI commands
 

@@ -5,7 +5,7 @@ sidebar_label: "Part 2: Dictionaries"
 
 A _dictionary_ is a set of [terms](terms) identified by [term name](terms#term-names). Dictionaries are themselves contained in terms. Every term has a dictionary. The term that contains a dictionary is the dictionary's _container term_. Organizing terms into dictionaries helps reduce name clashes.
 
-See also: [Quick Tutorial](../tutorial/dictionaries).
+See also: [Quick Tutorial](/docs/tutorial/dictionaries).
 
 ## The lexicon
 

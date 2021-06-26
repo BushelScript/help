@@ -3,7 +3,7 @@ title: "1-1: User Interaction"
 sidebar_label: "Step 1: User Interaction"
 ---
 
-See also: [Language Reference](../ref/user-interaction).
+See also: [Language Reference](/docs/ref/user-interaction).
 
 ## Obligatory “Hello, world!”
 

@@ -5,4 +5,4 @@ sidebar_label: "Step 2: Dictionaries"
 
 _Not written yet._
 
-See also: [Language Reference](../ref/dictionaries).
+See also: [Language Reference](/docs/ref/dictionaries).

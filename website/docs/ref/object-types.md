@@ -7,4 +7,4 @@ About objects...
 
 Every object has a _type_, which defines a set of possible values, relationships and behaviors.
 
-See also: [Quick Tutorial](../tutorial/object-types).
+See also: [Quick Tutorial](/docs/tutorial/object-types).

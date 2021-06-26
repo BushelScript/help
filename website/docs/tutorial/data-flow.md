@@ -5,7 +5,7 @@ sidebar_label: "Step 3: Data Flow"
 
 As any computer program, BushelScript scripts need to shunt data around to get things done. The two primary ways to do this are anonymous data flow and variables.
 
-See also: [Language Reference](../ref/data-flow).
+See also: [Language Reference](/docs/ref/data-flow).
 
 ## Anonymous data flow
 

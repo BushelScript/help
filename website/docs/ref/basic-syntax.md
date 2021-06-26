@@ -115,7 +115,7 @@ To be as clear and precise as possible, here is a table summarizing what each co
 
 ## [Operators](/docs/ref/grammar#invocation)
 
-_Operators_ are built-in commands that hvae no side-effects and special invocation syntax.
+_Operators_ are built-in commands with special invocation syntax.
 
 Each operator has an assigned _precedence_ ranking. This will be elaborated on as soon as some issues get ironed out.
 

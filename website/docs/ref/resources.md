@@ -15,15 +15,17 @@ Many external components are not necessarily available in any generic host envir
 
 To this end, a `use` expression declares a script _requirement_. If any such requirement is not met by the host environment, the script will refuse to run. The conditions under which a requirement is deemed met are specific to each resource type.
 
-[^parse-error]: Unmet requirements are a parse error because a required resource could provide terms used in the script.
+[^parse-error]: 
 
 ```
-use application Google Chrome
+use app Google Chrome
 ```
 
-This declares a requirement on Google Chrome being installed. If Google Chrome is not installed, the parser [^parse-error] complains:
+This declares a requirement on Google Chrome being installed. If Google Chrome is not installed, the parser complains:
 
-> this script requires the application “Google Chrome”, which was not found on your system
+> Can't find required app Google Chrome
+
+(Unmet requirements are a parser error because resources can import terms.)
 
 ## Resource terms
 
@@ -35,14 +37,13 @@ Note that _resource_ and _resource term_ are interchangeable; the latter simply 
 
 Resources are often accompanied by _imported terms_, which they [contain and export](dictionaries).
 
-```
-use application Contacts
+For example, the scripting dictionary for the Contacts app defines the [type term](terms) `person`, so when imported, the `Contacts` resource term contains and exports `person` (along with the rest of the dictionary):
 
-Contacts : person --> type 'person' (contained within Contacts)
-person --> type 'person' (exported by Contacts)
 ```
-
-The scripting dictionary for Contacts defines the [type term](terms) `person`. Therefore, the `Contacts` resource term contains and exports `person` (along with the rest of the dictionary).
+use app Contacts
+-- The term 'Contacts' has the Contacts AppleScript dictionary
+person --> type 'person' (in Contacts dictionary)
+```
 
 ### Remote calls
 
@@ -54,7 +55,7 @@ The nature of a remote call depends on the type of the object responsible, and t
 
 Most remote calls require _encoding_ (or _boxing_ or _packing_) of data into a _transport format_. For example, calls sent to applications and AppleScript scripts are routed through AppleEvents, which require data in the _AppleEvent descriptor_ transport format.
 
-Encoding can fail if an object is not adequately representable in the target format. For instance, a `record` can only be encoded as an AppleEvent descriptor if its keys are [`ae4`](terms#uid-domains) constants.
+Encoding can fail if an object is not adequately representable in the target format. For instance, a `record` can only be encoded as an AppleEvent descriptor if its keys are [`ae4`](terms#uri-schemes) symbolic contants.
 
 #### Decoding
 
@@ -62,7 +63,7 @@ Data received in response to a remote call requires _decoding_ (or _unboxing_ or
 
 ##### Wrapper objects
 
-Decoding can fail if a suitable data type mapping does not exist. When this occurs, the data is left intact in a _wrapper object_. A wrapper object can subsequently be sent in any remote calls using the same transport format, but is otherwise opaque and fairly useless.
+Decoding can fail if a suitable data type mapping does not exist. When this occurs, the data is left intact in a _wrapper object_. A wrapper object can subsequently be sent in any remote calls using the same transport format, but is otherwise opaque.
 
 ### Remote specifiers
 
@@ -70,9 +71,9 @@ Decoding can fail if a suitable data type mapping does not exist. When this occu
 
 ## Types of resources
 
-### [Application](/docs/ref/grammar#require)
+### [App](/docs/ref/grammar#require)
 
-`use app` and `use application` are refer to an application installed on the host system.
+`use app` refers to an app installed on the host system.
 
 - **Imported terms**: The app's AppleScript terminology, if it defines any.
 - **Remote calls**: AppleEvents sent to the application.
@@ -81,23 +82,38 @@ Decoding can fail if a suitable data type mapping does not exist. When this occu
 
 ```
 use app Mail
-use application id com.apple.Safari
+use app id com.apple.Safari
 
 -- Error if Google Chrome is not installed:
-use application Google Chrome
+use app Google Chrome
 
-tell Google Chrome
-  make new window -- Remote call
-  name of front window -- Remote specifier eval
-end tell
+tell Google Chrome to make new window -- Remote call
+name of front window of Google Chrome -- Remote specifier eval
 ```
+
+### [Library](/docs/ref/grammar#require)
+
+`use library` refers to an installed script library (written in BushelScript or AppleScript).
+
+If the library is written in BushelScript:
+
+- **Imported terms**: Terms the script defines.
+- **Local calls**: Calls to local functions. (Function definitions are imported.)
+- **Local specifiers**: Like any other local specifiers.
+
+If the library is written in AppleScript:
+
+- **Imported terms**: The script's sdef terminology, if it defines any.
+- **Remote calls**: AppleEvents executed in the context of the AppleScript script.
+  - **Transport format**: _AppleEvent descriptor_
+- **Remote specifiers**: None (will produce an error when evaluated).
 
 ### [AppleScript](/docs/ref/grammar#require)
 
 `use AppleScript` refers to an AppleScript file located somewhere on the host system.
 
-- **Imported terms**: The script's `sdef` terminology, if it defines any.
-- **Remote calls**: AppleEvents executed in the context of the script.
+- **Imported terms**: The script's sdef terminology, if it defines any.
+- **Remote calls**: AppleEvents executed in the context of the AppleScript script.
   - **Transport format**: _AppleEvent descriptor_
 - **Remote specifiers**: None (will produce an error when evaluated).
 

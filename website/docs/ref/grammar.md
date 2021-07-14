@@ -171,10 +171,10 @@ As a reminder, to simplify this grammar, we allow rules to be templates, writing
 
     <require> ::
       <require-library> | <require-system> | <require-app> | <require-applescript>
-    <require-library> :: use library <term-name>
-    <require-system> :: use system [ version ( v | V ) <digits> . <digits> [ . <digits> ] ]
-    <require-app> :: use app [ id ] <term-name>
-    <require-applescript> :: AppleScript <term-name> at <string>
+    <require-library> :: require library <term-name>
+    <require-system> :: require system [ version ( v | V ) <digits> . <digits> [ . <digits> ] ]
+    <require-app> :: require app [ id ] <term-name>
+    <require-applescript> :: require AppleScript <term-name> at <string>
 
 ## Specifier
 

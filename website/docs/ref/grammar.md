@@ -80,10 +80,12 @@ As a reminder, to simplify this grammar, we allow rules to be templates, writing
       defining <term-name> [ as ( <term> | <term-uri> ) ] <sequence>
     <variable-definition> :: let ( <term-name>( be ) <expression> | <term-name> )
     <function-defintion> ::
-      on ( <term-name>( ':' ) <delimited-list>( <parameter-spec>, ',' ) | <term-name> )
+      on <term-name>( <line-break> ) ( <delimited-list>( <parameter-spec>, <line-break> ) <line-break> do | do )
       <sequence>
     <parameter-spec> ::
-      <lazy-term-name> [ <term-name>( '(' ) <expression> ')' | <term-name> ]
+      <term-name>( '(' ) '(' <term-name>( ')' ) [ ':' <expression> ] |
+      <term-name>( ':' ) <expression> |
+      <term-name>
 
 ## Group
 

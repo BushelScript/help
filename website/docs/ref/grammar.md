@@ -101,7 +101,7 @@ As a reminder, to simplify this grammar, we allow rules to be templates, writing
     <literal> ::
       <integer> | <real> |
       <string> | <multiline-string> | <interpreted-string> |
-      <boolean> | <null>
+      <boolean> | <missing> | <unspecified>
     <integer> :: <digits>(such that their value in base-10 is in [-2^63,2^63))
     <real> :: [ <digits> ] . <digits> [ ( e | E ) [ + | - ] <digits> ]
     <string> ::
@@ -111,7 +111,8 @@ As a reminder, to simplify this grammar, we allow rules to be templates, writing
       ##(' <utf-8>( ')' ) <utf-8>( '##(' (same delimiter) ')' )
     <interpreted-string> :: #! <utf-8>( <line-break> ) <utf-8>( <interpreted-string> | #! )
     <boolean> :: true | false
-    <null> :: null
+    <missing> :: missing
+    <unspecified> :: unspecified
 
 ## Reference
 

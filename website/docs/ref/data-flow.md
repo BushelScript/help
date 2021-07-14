@@ -9,11 +9,11 @@ See also: [Quick Tutorial](/docs/tutorial/data-flow).
 
 ## [Anonymous](/docs/ref/grammar#reference)
 
-The `that` keyword refers to the result of the last sequenced expression (i.e., whatever was discarded at the end of the previous line). This is called _anonymous_ data flow because there is no naming involved. It is somewhat analogous to shell script pipes (`|`) or the implicit data flow between actions in Automator or Siri Shortcuts.
+The `that` keyword refers to the result of the last sequenced expression (i.e., whatever was discarded at the end of the previous line). This is called _anonymous_ data flow because there is no naming involved. It is somewhat analogous to shell script pipes (`|`) or the implicit data flow between actions in Shortcuts and Automator.
 
-`that` only lacks meaning at the beginning of a [function](functions), where it evaluates to [`null`](basic-syntax#null-the-absence-of-a-value) because there is no previous expression. Since all language structures are expressions, they always result in a value, which may be referred to by `that` once discarded.
+Since all language structures are expressions, they always result in a value, which means the value of `that` is almost always meaningful. However, at the beginning of a [function](functions),`that` evaluates to [`unspecified`](basic-syntax#unspecified-the-incidental-absence-of-a-value) since there is no previous expression.
 
-Anonymous data flow is encouraged over the use of variables whenever reasonable. But don't feel restricted to it.
+Anonymous data flow is encouraged instead of variables whenever reasonable, but don't feel restricted to it.
 
 ## [Variables](/docs/ref/grammar#definition)
 

@@ -54,33 +54,34 @@ true and false --> false
 false or true --> true
 ```
 
-### [`null`, the absence of a value](/docs/ref/grammar#literal)
+### [`missing`, the intentional absence of a value](/docs/ref/grammar#literal)
 
-`null` indicates the absence of a meaningful value. Its effective semantics depend on the context of its use.
-
-`null` is the sole value of type `[ae4:msng]`, which is called `missing value` in AppleScript. It is [encoded](resources#remote-invocations) as this type object when sent in an AppleEvent.
+`missing` indicates the intentional absence of a value. It is the sole value of type `[ae4:msng]`, which is called `missing value` in AppleScript. It is [encoded](resources#remote-invocations) as this type object when sent in an AppleEvent.
 
 ```
-null
-null as boolean --> false
+missing
+missing as boolean --> false
 ```
 
-Parameters without corresponding arguments in a [function](functions) [invocation](#command-invocations) are set to `null` in the function body:
+### [`unspecified`, the incidental absence of a value](/docs/ref/grammar#literal)
+
+`unspecified` indicates the incidental absence of a value. It is the initial value of unset variables, including those corresponding to [function](functions) parameters.
 
 ```
-on build greeting: to name
-  -- 'name' is null if the 'to' parameter is omitted
-  alert name
-  -- null as a boolean is false
+let my var
+my var --> unspecified
+
+to build greeting
+  to (name)
+do
+  -- 'name' = unspecified if the 'to' parameter is omitted
   "Hello" & (if name then (", " & name) else "") & "!"
 end
-
 build greeting --> "Hello!"
-alert that
-
 build greeting to "Billy" --> "Hello, Billy!"
-alert that
 ```
+
+`unspecified` is also the value of `that` at the beginning of a function.
 
 ## Commands
 

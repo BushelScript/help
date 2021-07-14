@@ -34,7 +34,7 @@ end
 
 This style is encouraged whenever reasonable, but don't feel restricted to it.
 
-Take note that everything you write in BushelScript is an expression that yields a result, so `that` almost always has a meaningful value. (The only exception is the first expression of a program or [function](function), where `that` is [`null`](basic-syntax#null-the-absence-of-a-value).)
+Take note that everything you write in BushelScript is an expression that yields a result, so `that` almost always has a meaningful value. (The only exception is the first expression of a program or [function](function), where `that` is [`unspecified`](basic-syntax#unspecified-the-incidental-absence-of-a-value).)
 
 ## Variables
 

@@ -52,7 +52,7 @@ choices
 ## [Iterative loops](/docs/ref/grammar#compound)
 
 ```
-use app Finder
+require app Finder
 alert "Your currently connected disks are…"
 tell Finder to get name of every disk
 repeat for disk name in that

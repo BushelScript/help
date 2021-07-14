@@ -30,7 +30,7 @@ A handler for which a _command term_ is defined can be [invoked](basic-syntax#co
 Handlers named using AppleScript _user-defined identifiers_ (green text in Script Editor) are not automatically imported as terms into BushelScript, but are still accessible through [raw form](terms#raw-form) terms with the `asid` [semantic URI scheme](terms#uri-schemes).
 
 ```
-use AppleScript My Script at "~/Scripts/My Script.scpt"
+require AppleScript My Script at "~/Scripts/My Script.scpt"
 
 tell My Script
   -- Calls a handler named with the

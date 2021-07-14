@@ -58,7 +58,7 @@ false or true --> true
 
 `null` indicates the absence of a meaningful value. Its effective semantics depend on the context of its use.
 
-`null` is the sole value of [raw form](terms#raw-form) [type](terms#term-roles) `«type ae4:msng»`, which is called `missing value` in AppleScript. It is [encoded](resources#remote-invocations) as this type object when sent in an AppleEvent.
+`null` is the sole value of type `[ae4:msng]`, which is called `missing value` in AppleScript. It is [encoded](resources#remote-invocations) as this type object when sent in an AppleEvent.
 
 ```
 null

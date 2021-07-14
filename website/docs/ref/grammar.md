@@ -76,8 +76,8 @@ As a reminder, to simplify this grammar, we allow rules to be templates, writing
     <definition> ::
       <term-definition> | <variable-definition> | <function-definition>
     <term-definition> ::
-      define <term-name> [ as <term> ] |
-      defining <term-name> [ as <term> ] <sequence>
+      define <term-name> [ as ( <term> | <term-uri> ) ] |
+      defining <term-name> [ as ( <term> | <term-uri> ) ] <sequence>
     <variable-definition> :: let ( <term-name>( be ) <expression> | <term-name> )
     <function-defintion> ::
       on ( <term-name>( ':' ) <delimited-list>( <parameter-spec>, ',' ) | <term-name> )
@@ -199,7 +199,7 @@ As a reminder, to simplify this grammar, we allow rules to be templates, writing
 
 ## Term
 
-    <raw-term> :: '«' <term-role> <space> <term-uri>( '»' )
+    <raw-term> :: # <term-role> <term-uri>
     <term>( R ) :: <raw-term>(with role R) | (any term in the current lexicon with role R)
     <term> :: <term>(any role in <term-role>)
     <property> ::  <term>(property)
@@ -212,11 +212,12 @@ As a reminder, to simplify this grammar, we allow rules to be templates, writing
 ## Term ID
 
     <term-role> :: type | property | constant | command | parameter | variable | resource
-    <term-uri>( E ) ::
-      id:<utf-8>( E ) |
-      res:(resource type):<utf-8>( E ) |
-      ae4:(4 characters) | ae8:(8 characters) | ae12:(12 characters) |
-      asid:<utf-8>
+    <term-uri>:: '[' (
+        id:<utf-8>( ']' ) |
+        res:(resource type):<utf-8>( ']' ) |
+        ae4:(4 characters) ']' | ae8:(8 characters) ']' | ae12:(12 characters) ']' |
+        asid:<utf-8>( ']' )
+      )
 
 ## Term name
 

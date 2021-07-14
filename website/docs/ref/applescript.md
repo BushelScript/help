@@ -35,6 +35,6 @@ require AppleScript My Script at "~/Scripts/My Script.scpt"
 tell My Script
   -- Calls a handler named with the
   -- user-defined identifier "my_applescript_handler"
-  «command asid:my_applescript_handler»
+  #command [asid:my_applescript_handler]
 end tell
 ```

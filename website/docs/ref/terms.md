@@ -3,7 +3,7 @@ title: "2-1: Terms"
 sidebar_label: "Part 1: Terms"
 ---
 
-_Terms_ are the syntactic particles of BushelScript programs. Terms defined in dictionaries have [names](#term-names). Every term has a [syntactic role](#syntactic-roles), a [semantic URI](#semantic-uris), and contains a [dictionary](dictionaries) which can define more terms.
+_Terms_ are the syntactic particles of BushelScript programs. Terms defined in dictionaries have [names](#term-names). Every term has a [syntactic role](#syntactic-roles), a [semantic URI](#semantic-uris), and contains a [dictionary](/docs/ref/dictionaries) which can define more terms.
 
 See also: [Quick Tutorial](/docs/tutorial/terms).
 
@@ -17,13 +17,13 @@ Each term has a _syntactic role_, which determines its function.
 
 | Term role  | `define` syntax | Syntactic function                                                                                            |
 |------------|-----------------|---------------------------------------------------------------------------------------------------------------|
-| Type       | `type`          | Can create a `type` object or a variety of [specifiers](specifiers#element-specifiers).                       |
+| Type       | `type`          | Can create a `type` object or a variety of [specifiers](/docs/ref/specifiers#element-specifiers).                       |
 | Property   | `property`      | Creates a property specifier.                                                                                 |
 | Constant   | `constant`      | Evaluates to a `constant` object representing itself; models symbolic constants or AppleScript "enumerators". |
-| Command    | `command`       | [Invokes a command](basic-syntax#command-invocations).                                                        |
-| Parameter  | `parameter`     | [Associates an argument with a parameter in a command invocation](basic-syntax#summarized-meta-terminology).  |
-| Variable   | `variable`      | Refers to stored data; usually defined using a [`let` expression](data-flow#variables).                       |
-| Resource   | `resource`      | [Refers to an imported resource](resources#resource-terms).                                                   |
+| Command    | `command`       | [Invokes a command](/docs/ref/basic-syntax#command-invocations).                                                        |
+| Parameter  | `parameter`     | [Associates an argument with a parameter in a command invocation](/docs/ref/basic-syntax#summarized-meta-terminology).  |
+| Variable   | `variable`      | Refers to stored data; usually defined using a [`let` expression](/docs/ref/data-flow#variables).                       |
+| Resource   | `resource`      | [Refers to an imported resource](/docs/ref/resources#resource-terms).                                                   |
 
 ## Semantic URIs
 
@@ -34,7 +34,7 @@ Each term also has a _semantic URI_, which identifies its runtime meaning. As us
 | Scheme        | Description                                                       | Data format                                  | Example URIs with this scheme                                                                                                                    |
 |---------------|-------------------------------------------------------------------|----------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
 | `id`          | BushelScript native identifier (dervied from qualified term name) | Any number of term names separated by colons | `id:variable name`<br></br>`id:My Library:my type:my property`                                                                                            |
-| `res`         | Resource ID                                                       | See [resource types](resources#types-of-resources) | `res:library:My Library`<br></br>`res:system`<br></br>`res:app:System Preferences`<br></br>`res:appid:com.apple.Safari`<br></br> |
+| `res`         | Resource ID                                                       | See [resource types](/docs/ref/resources#types-of-resources) | `res:library:My Library`<br></br>`res:system`<br></br>`res:app:System Preferences`<br></br>`res:appid:com.apple.Safari`<br></br> |
 | `ae4`         | Four-byte AppleEvent code                                         | 4 MacRoman characters                        | `ae4:cwin`                                                                                                                                       |
 | `ae8`         | AE event class code, AE event ID code                             | 8 MacRoman characters                        | `ae8:coresetd`                                                                                                                                   |
 | `ae12`        | AE event class code, AE event ID code, AE parameter code          | 12 MacRoman characters                       | `ae12:coresetddata`                                                                                                                              |
@@ -62,7 +62,7 @@ The result is always `true` because `sqrt` and `square root` have identical sema
 
 ### Homonyms
 
-Overlapping terms with identical names but different IDs are _homonyms_ of each other. Such identical-looking terms with different behavior should be avoided if possible. Note that homonyms are necessarily defined in different [dictionaries](dictionaries), since a dictionary accessibly maps a name to at most one term.
+Overlapping terms with identical names but different IDs are _homonyms_ of each other. Such identical-looking terms with different behavior should be avoided if possible. Note that homonyms are necessarily defined in different [dictionaries](/docs/ref/dictionaries), since a dictionary accessibly maps a name to at most one term.
 
 ### Identical terms
 

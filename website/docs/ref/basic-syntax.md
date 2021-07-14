@@ -45,7 +45,7 @@ A `string` is a sequence of Unicode characters. If it's text, it goes in a `stri
 
 ### [`boolean`, truth and falsity](/docs/ref/grammar#literal)
 
-A `boolean` represents the answer to a yes-or-no question. It can be reacted to by [control flow constructs](control-flow) or factored into [logical operations](#binary-operators).
+A `boolean` represents the answer to a yes-or-no question. It can be reacted to by [control flow constructs](/docs/ref/control-flow) or factored into [logical operations](#binary-operators).
 
 ```
 true
@@ -56,7 +56,7 @@ false or true --> true
 
 ### [`missing`, the intentional absence of a value](/docs/ref/grammar#literal)
 
-`missing` indicates the intentional absence of a value. It is the sole value of type `[ae4:msng]`, which is called `missing value` in AppleScript. It is [encoded](resources#remote-invocations) as this type object when sent in an AppleEvent.
+`missing` indicates the intentional absence of a value. It is the sole value of type `[ae4:msng]`, which is called `missing value` in AppleScript. It is [encoded](/docs/ref/resources#remote-invocations) as this type object when sent in an AppleEvent.
 
 ```
 missing
@@ -65,7 +65,7 @@ missing as boolean --> false
 
 ### [`unspecified`, the incidental absence of a value](/docs/ref/grammar#literal)
 
-`unspecified` indicates the incidental absence of a value. It is the initial value of unset variables, including those corresponding to [function](functions) parameters.
+`unspecified` indicates the incidental absence of a value. It is the initial value of unset variables, including those corresponding to [function](/docs/ref/functions) parameters.
 
 ```
 let my var

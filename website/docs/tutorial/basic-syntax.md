@@ -49,7 +49,7 @@ _Block comments_ start with two hyphens and an opening parenthesis `--(`, and th
 
 ## Values
 
-_Values_ are abstract objects, like numbers. Every value belongs to a type class, discussed later in [1-4: Object Types](object-types).
+_Values_ are abstract objects, like numbers. Every value belongs to a type class, discussed later in [1-4: Object Types](/docs/tutorial/object-types).
 
 ### Numbers
 
@@ -118,7 +118,7 @@ _Aside (advanced)_: As an example of why distinguishing between "intentional" an
 
 _Commands_ are actions like `add`, `remove`, `search`, and `send`. They can take data as input and produce data as output, and they may have additional effects.
 
-We can _invoke_ (run) a command by typing its name. For example, `alert` is the built-in command that we used in [Step 1: User Interaction](user-interaction):
+We can _invoke_ (run) a command by typing its name. For example, `alert` is the built-in command that we used in [Step 1: User Interaction](/docs/tutorial/user-interaction):
 
 ```
 alert

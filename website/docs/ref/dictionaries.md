@@ -3,7 +3,7 @@ title: "2-2: Dictionaries"
 sidebar_label: "Part 2: Dictionaries"
 ---
 
-A _dictionary_ is a set of [terms](terms) identified by [term name](terms#term-names). Dictionaries are themselves contained in terms. Every term has a dictionary. The term that contains a dictionary is the dictionary's _container term_. Organizing terms into dictionaries helps reduce name clashes.
+A _dictionary_ is a set of [terms](/docs/ref/terms) identified by [term name](/docs/ref/terms#term-names). Dictionaries are themselves contained in terms. Every term has a dictionary. The term that contains a dictionary is the dictionary's _container term_. Organizing terms into dictionaries helps reduce name clashes.
 
 See also: [Quick Tutorial](/docs/tutorial/dictionaries).
 
@@ -21,7 +21,7 @@ _Primary term lookup_ finds terms in the lexicon. The dictionaries in the lexico
 
 #### Term shadowing
 
-A term in the lexicon _shadows_ any [homonyms](terms#homonyms) in dictionaries later in the search order. Shadowed terms are hidden from primary lookup until the shadowing term's dictionary is removed from the lexicon.
+A term in the lexicon _shadows_ any [homonyms](/docs/ref/terms#homonyms) in dictionaries later in the search order. Shadowed terms are hidden from primary lookup until the shadowing term's dictionary is removed from the lexicon.
 
 ### Secondary term lookup
 

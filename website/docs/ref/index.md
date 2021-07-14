@@ -34,4 +34,4 @@ This reference describes version **0.4** of the BushelScript software package. S
 
 ## Language grammar
 
-An incomplete formal grammar is defined by this reference in [Appendix B](grammar). When applicable, section headings throughout this reference act as links to relevant grammar rules.
+An incomplete formal grammar is defined by this reference in [Appendix B](/docs/ref/grammar). When applicable, section headings throughout this reference act as links to relevant grammar rules.

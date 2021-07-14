@@ -34,11 +34,11 @@ end
 
 This style is encouraged whenever reasonable, but don't feel restricted to it.
 
-Take note that everything you write in BushelScript is an expression that yields a result, so `that` almost always has a meaningful value. (The only exception is the first expression of a program or [function](function), where `that` is [`unspecified`](basic-syntax#unspecified-the-incidental-absence-of-a-value).)
+Take note that everything you write in BushelScript is an expression that yields a result, so `that` almost always has a meaningful value. (The only exception is the first expression of a program or [function](/docs/tutorial/function), where `that` is [`unspecified`](/docs/tutorial/basic-syntax#unspecified-the-incidental-absence-of-a-value).)
 
 ## Variables
 
-If you are used to AppleScript, take note: In BushelScript, there are no green-lettered "user identifiers". Instead, all names, including variables, are [terms](terms) defined in a [dictionary](dictionaries).
+If you are used to AppleScript, take note: In BushelScript, there are no green-lettered "user identifiers". Instead, all names, including variables, are [terms](/docs/tutorial/terms) defined in a [dictionary](/docs/tutorial/dictionaries).
 
 Variables can be defined using a `let` expression. This defines a variable named `logic`:
 
@@ -68,4 +68,4 @@ And like all terms, variables can be composed of multiple words:
 let my favorite number be 3.141592654
 ```
 
-Shadowing and naming rules will be covered in detail in [terms](terms).
+Shadowing and naming rules will be covered in detail in [terms](/docs/tutorial/terms).

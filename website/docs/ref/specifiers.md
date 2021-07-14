@@ -27,7 +27,7 @@ An element relation exists based on an element type, an indexing form, and zero 
 
 ### [Element specifiers](/docs/ref/grammar#specifier)
 
-An _element specifier_ describes an element relation. The syntax varies by indexing form, but always includes a [type term](terms#term-roles). Reciprocally, the syntactic form used determines the specifier's indexing form.
+An _element specifier_ describes an element relation. The syntax varies by indexing form, but always includes a [type term](/docs/ref/terms#term-roles). Reciprocally, the syntactic form used determines the specifier's indexing form.
 
 ## Indexing forms
 
@@ -153,7 +153,7 @@ A Filter test is predicated on comparions between test specimen-rooted specifier
 
 **No identifying objects**, but a special test predicate expression is used instead.
 
-The test expression should usually consist of binary comparison or logical [operations](basic-syntax#binary-operators).
+The test expression should usually consist of binary comparison or logical [operations](/docs/ref/basic-syntax#binary-operators).
 
 #### Specimen specifiers
 
@@ -167,7 +167,7 @@ windows where name contains "Google"
 
 ## Property relations
 
-A _property relation_ relates a _host object_ to a _value object_ via a [property term](terms#term-roles). While element relations are one-to-many, property relations are one-to-one. Property relations often describe the host object with number or string values, although they can also act as references to other complex objects.
+A _property relation_ relates a _host object_ to a _value object_ via a [property term](/docs/ref/terms#term-roles). While element relations are one-to-many, property relations are one-to-one. Property relations often describe the host object with number or string values, although they can also act as references to other complex objects.
 
 ### [Property specifiers](/docs/ref/grammar#specifier)
 
@@ -201,4 +201,4 @@ A specifier can be _explicitly evaluated_ with a `get` expression. This always r
 
 ### [Reference expressions](/docs/ref/grammar#getset)
 
-Implicit evaluation can be contextually disabled with a `ref` expression. This always creates a `specifier` object, which can then be sent in [remote calls](resources#remote-calls) or evaluated later.
+Implicit evaluation can be contextually disabled with a `ref` expression. This always creates a `specifier` object, which can then be sent in [remote calls](/docs/ref/resources#remote-calls) or evaluated later.

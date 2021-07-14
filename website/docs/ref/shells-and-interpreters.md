@@ -30,4 +30,4 @@ Weave expressions evaluate to whatever is written to their _standard output_. In
 
 ### Weave input
 
-Similarly, weaves are automatically provided, through _standard input_, the current value of [`that`](data-flow#anonymous) coerced to a `string`. In the above example, the Python script reads the result of the `bash` weave from its own stdin and echoes it back out.
+Similarly, weaves are automatically provided, through _standard input_, the current value of [`that`](/docs/ref/data-flow#anonymous) coerced to a `string`. In the above example, the Python script reads the result of the `bash` weave from its own stdin and echoes it back out.

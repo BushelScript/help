@@ -29,9 +29,9 @@ This declares a requirement on Google Chrome being installed. If it's not instal
 
 ### Imported terms
 
-Resources terms often [contain (and export)](dictionaries) _imported terms_.
+Resources terms often [contain (and export)](/docs/ref/dictionaries) _imported terms_.
 
-For example, the scripting dictionary for the Contacts app defines the [type](terms) `person`, so when imported, the `Contacts` resource contains and exports `person` (along with the rest of the dictionary):
+For example, the scripting dictionary for the Contacts app defines the [type](/docs/ref/terms) `person`, so when imported, the `Contacts` resource contains and exports `person` (along with the rest of the dictionary):
 
 ```
 require app Contacts
@@ -47,7 +47,7 @@ At runtime, a resource evaluates to a _resource object_ that represents it. Reso
 
 Most remote calls require _encoding_ (or _boxing_ or _packing_) of data into a _transport format_. For example, calls sent to apps and AppleScripts are routed through AppleEvents, which require data to be represented as AppleScript objects. If encoding is possible, it happens automatically.
 
-Encoding can fail if an object is not adequately representable in the target format. For instance, a `record` can only be encoded as an AppleScript object if its keys are [`ae4`](terms#uri-schemes) symbolic contants.
+Encoding can fail if an object is not adequately representable in the target format. For instance, a `record` can only be encoded as an AppleScript object if its keys are [`ae4`](/docs/ref/terms#uri-schemes) symbolic contants.
 
 #### Decoding
 
@@ -57,7 +57,7 @@ Decoding can fail if no BushelScript type is known to adequately represent it. W
 
 ### Remote specifiers
 
-[Specifiers](specifiers) rooted in a resource object can trigger remote calls when evaluated. These are called _remote specifiers_.
+[Specifiers](/docs/ref/specifiers) rooted in a resource object can trigger remote calls when evaluated. These are called _remote specifiers_.
 
 ```
 require app Safari

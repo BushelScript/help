@@ -75,7 +75,7 @@ _Raw form_ is special syntax that creates an anonymous term by stating its synta
 This example refers to a term that's already defined (displayed with its usual name at runtime):
 
 ```
-ref #type [ae4:cwin] --> window
+#type [ae4:cwin] --> window
 ```
 
 `#type [ae4:abcd]` is a not typically a defined term, but raw form can construct it on the fly. This is useful to quickly fill gaps in AppleScript terminology.

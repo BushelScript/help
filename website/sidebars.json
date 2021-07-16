@@ -30,15 +30,7 @@
       },
       {
         "type": "category",
-        "label": "Section 4: External Interfacing",
-        "items": [
-          "tutorial/applescript",
-          "tutorial/shells-and-interpreters"
-        ]
-      },
-      {
-        "type": "category",
-        "label": "Section 5: Basic Programming Features",
+        "label": "Section 4: Basic Programming Features",
         "items": [
           "tutorial/functions",
           "tutorial/control-flow"
@@ -46,19 +38,19 @@
       },
       {
         "type": "category",
-        "label": "Section 6: Basic Application Scripting",
+        "label": "Section 5: Basic Application Scripting",
         "items": [
         ]
       },
       {
         "type": "category",
-        "label": "Section 7: Advanced Programming Features",
+        "label": "Section 6: Advanced Programming Features",
         "items": [
         ]
       },
       {
         "type": "category",
-        "label": "Section 8: Advanced Application Scripting",
+        "label": "Section 7: Advanced Application Scripting",
         "items": [
         ]
       },
@@ -102,15 +94,7 @@
       },
       {
         "type": "category",
-        "label": "Section 4: External Interfacing",
-        "items": [
-          "ref/applescript",
-          "ref/shells-and-interpreters"
-        ]
-      },
-      {
-        "type": "category",
-        "label": "Section 5: Basic Programming Features",
+        "label": "Section 4: Basic Programming Features",
         "items": [
           "ref/functions",
           "ref/control-flow"
@@ -118,19 +102,19 @@
       },
       {
         "type": "category",
-        "label": "Section 6: Basic Application Scripting",
+        "label": "Section 5: Basic Application Scripting",
         "items": [
         ]
       },
       {
         "type": "category",
-        "label": "Section 7: Advanced Programming Features",
+        "label": "Section 6: Advanced Programming Features",
         "items": [
         ]
       },
       {
         "type": "category",
-        "label": "Section 8: Advanced Application Scripting",
+        "label": "Section 7: Advanced Application Scripting",
         "items": [
         ]
       },

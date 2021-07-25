@@ -11,7 +11,7 @@ The YAML-based format looks like this:
 
 ```yaml
 translation:
-    format: 0.4 # Translation file format (version)
+    format: 0.6 # Translation file format (version)
     language: bushelscript_en # Language the translation is written for
     mappings: # Contains all the actual translations
         type: # Any role (type, command, parameter, proprety, …)
@@ -24,27 +24,24 @@ translation:
                 # …
         command:
             ae8:
-                aevtquit: quit
+                aevtquit:
+                    name: quit
+                    doc: Quit an app. This is a standard AppleScript command that all apps understand.
                 miscactv: activate
-            id: # The id scheme has optional special syntax:
-                # Terms can be nested in dictionaries…
-                Math: # …by nesting mappings
-                    abs:
+            id:
+                Math/abs:
+                    name:
                         - abs
                         - absolute value
+                    doc: Return the absolute value of the direct parameter.
         parameter:
             ae12:
                 coresetddata: to
                 aevtodocstxt: search text
             id:
-                Math:
-                    abs:
-                        .direct: of
-                Sequence:
-                    add:
-                        .target: to
-                    join:
-                        with:
-                            - with
-                            - by
+                Math/abs/.direct: of
+                Sequence/add/.target: to
+                Sequence/join/with:
+                    - with
+                    - by
 ```

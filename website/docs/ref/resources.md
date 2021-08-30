@@ -29,7 +29,7 @@ This declares a requirement on Google Chrome being installed. If it's not instal
 
 ### Imported terms
 
-Resources terms often [contain (and export)](/docs/ref/dictionaries) _imported terms_.
+Resource terms often [contain (and export)](/docs/ref/dictionaries) _imported terms_.
 
 For example, the scripting dictionary for the Contacts app defines the [type](/docs/ref/terms) `person`, so when imported, the `Contacts` resource contains and exports `person` (along with the rest of the dictionary):
 
@@ -41,23 +41,23 @@ person --> type 'person' in Contacts dictionary
 
 ### Remote calls
 
-At runtime, a resource evaluates to a _resource object_ that represents it. Resource objects often handle commands via _remote calls_ over some protocol, requiring marshalling of data.
+At runtime, a resource evaluates to a _resource item_ that represents it. Resource items often handle commands via _remote calls_ over some protocol, requiring marshalling of data.
 
 #### Encoding
 
-Most remote calls require _encoding_ (or _boxing_ or _packing_) of data into a _transport format_. For example, calls sent to apps and AppleScripts are routed through AppleEvents, which require data to be represented as AppleScript objects. If encoding is possible, it happens automatically.
+Most remote calls require _encoding_ (or _boxing_ or _packing_) of data into a _transport format_. For example, calls sent to apps and AppleScripts are routed through AppleEvents, which require data represented as AppleScript objects.
 
-Encoding can fail if an object is not adequately representable in the target format. For instance, a `record` can only be encoded as an AppleScript object if its keys are [`ae4`](/docs/ref/terms#uri-schemes) symbolic contants.
+If encoding is possible, it happens automatically. Encoding can fail if an item is not adequately representable in the target format; for instance, a `record` can only be encoded as an AppleScript object if its keys are [`ae4`](/docs/ref/terms#uri-schemes) symbolic contants.
 
 #### Decoding
 
-Data received in response to a remote call requires _decoding_ (or _unboxing_ or _unpacking_) from a transport format into a native BushelScript format. For example, reply AppleEvents contain AppleScript objects, which must be decoded to be useful in BushelScript. If decoding is possible, it happens automatically.
+Data received in response to a remote call requires _decoding_ (or _unboxing_ or _unpacking_) from a transport format into BushelScript items. For example, reply AppleEvents contain AppleScript objects, which must be decoded to be useful in BushelScript. If decoding is possible, it happens automatically.
 
-Decoding can fail if no BushelScript type is known to adequately represent it. When this occurs, the data is left intact in a _wrapper object_. Locally, wrapper objects are opaque, but they can be sent in any remote calls with the same transport format.
+Decoding can fail if no type of BushelScript item is known by the runtime system to adequately represent it. When this happens, the data is left intact in a _wrapper item_ whose sole use is to be sent in remote calls with the same transport format.
 
 ### Remote specifiers
 
-[Specifiers](/docs/ref/specifiers) rooted in a resource object can trigger remote calls when evaluated. These are called _remote specifiers_.
+[Specifiers](/docs/ref/specifiers) rooted in a resource item can trigger remote calls when evaluated. These are called _remote specifiers_.
 
 ```
 require app Safari

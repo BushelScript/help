@@ -15,7 +15,7 @@ The _lexicon_ refers to the list of in-scope dictionaries at a given point in a 
 
 When the parser encounters a term name (such as `abc`), it consults the lexicon to find a term with that name, using a process called _term lookup_. Term lookup has two subprocesses, _primary lookup_ and _secondary lookup_, which are attempted in that order.
 
-Primary term lookup finds terms by searching dictionaries in the lexicon, in order from most to least recently pushed, for a term with the name in question. The lookup ends once such a term is found, even if there are multiple such terms in the lexicon dictionaries. Terms that are invisible to primary lookup in this way are said to be _shadowed_. This lookup mechanism is very similar lexical scoping, as found in many programming languages.
+Primary term lookup finds terms by searching dictionaries in the lexicon, in order from most to least recently pushed, for a term with the name in question. The lookup ends once such a term is found, even if there are other such terms in the lexicon dictionaries. Terms that are invisible to primary lookup in this way are said to be _shadowed_. Primary lookup is very similar to lexical scoping, as found in many other programming languages.
 
 If primary lookup fails to find a term, secondary lookup is attempted instead. Secondary lookup finds terms exported by the dictionaries in the lexicon, in the same search order as primary lookup would search them. The meaning of "exported" is discussed below.
 

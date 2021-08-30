@@ -13,23 +13,17 @@ The _lexicon_ refers to the list of in-scope dictionaries at a given point in a 
 
 ## Term lookup
 
-When the parser encounters a term name (such as `abc`), it consults the lexicon to find a term with that name. This process is _term lookup_. Term lookup has two subprocesses, primary lookup and secondary lookup. Primary lookup is always tried first, and if it fails, secondary lookup is tried instead. If secondary lookup also fails, then the entire lookup fails, and an "undefined term" error may result.
+When the parser encounters a term name (such as `abc`), it consults the lexicon to find a term with that name, using a process called _term lookup_. Term lookup has two subprocesses, _primary lookup_ and _secondary lookup_, which are attempted in that order.
 
-### Primary term lookup
+Primary term lookup finds terms by searching dictionaries in the lexicon, in order from most to least recently pushed, for a term with the name in question. The lookup ends once such a term is found, even if there are multiple such terms in the lexicon dictionaries. Terms that are invisible to primary lookup in this way are said to be _shadowed_. This lookup mechanism is very similar lexical scoping, as found in many programming languages.
 
-_Primary term lookup_ finds terms in the lexicon. The dictionaries in the lexicon are searched in order from bottom (most recently pushed) to top (the built-in top-level dictionary).
+If primary lookup fails to find a term, secondary lookup is attempted instead. Secondary lookup finds terms exported by the dictionaries in the lexicon, in the same search order as primary lookup would search them. The meaning of "exported" is discussed below.
 
-#### Term shadowing
-
-A term in the lexicon _shadows_ any [homonyms](/docs/ref/terms#homonyms) in dictionaries later in the search order. Shadowed terms are hidden from primary lookup until the shadowing term's dictionary is removed from the lexicon.
-
-### Secondary term lookup
-
-_Secondary term lookup_ finds terms exported by the dictionaries of terms in the lexicon (explained below).
+If both primary and secondary lookup fail for a name, then the parser will backtrack one word and try again. For example, if the name `one two three` failed term lookup, then the parser will reinterpret it as `|one two| three`, where `one two` and `three` are separate names. If lookup of `one two` fails, then the parser will backtrack again and reinterpret it as `|one| two three`. Note that if `one` happened to be a language keyword, it would be interpreted as such at this point; this is why terms that begin with language keywords are allowed. Finally, if lookup of `one` fails again, then the parser raises an undefined term error.
 
 ## Exporting dictionaries
 
-An _exporting dictionary_ _exports_ its contents, making them visible to secondary term lookup when the dictionary's container term is in the lexicon. All dictionaries other than command dictionaries (used for parameters) and `function` dictionaries (used for variables) are exporting.
+An _exporting dictionary_ "exports" its contents, making them visible to secondary term lookup when the dictionary's container term is in the lexicon. All dictionaries other than command dictionaries (used for parameters) and `function` dictionaries (used for variables) are exporting.
 
 Given the following dictionary setup:
 
@@ -43,6 +37,6 @@ end
 
 `A` and `B` are both terms containing exporting dictionaries. Therefore, `B` is visible to secondary term lookup when `A` is in the lexicon because `A` exports it. Likewise, `C` is visible to secondary term lookup when `B` is in the lexicon because `B` exports it.
 
-Note that `C` is _not_ visible when only `A` is in the lexicon because `C` is exported by `B`, not `A`. In this case, `C` could be referred to as `B : C` or `A : B : C`, but not as just `C`.
+Note that `C` is _not_ visible when only `A` is in the lexicon because `C` is exported by `B`, not `A`. In this case, `C` could be referred to as `B/C` or `A/B/C`, but not as just `C`.
 
-This feature is likely to be tweaked or removed in the future.
+The mechanics of exporting may be changed before v1.0.

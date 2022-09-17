@@ -9,9 +9,11 @@ See also: [Quick Tutorial](/docs/tutorial/specifiers).
 
 ## Relations
 
-_Relations_ relate items to each other, connecting them through an item graph somewhat analogous to a [relational database](https://en.wikipedia.org/wiki/Relational_database).
+_Relations_ relate items to each other, connecting them through an item graph.
 
-Relations are not themselves syntactic elements, but exist at runtime between items and are described by specifiers.
+Relations are not themselves syntactic elements, but exist at runtime between items, and are described by specifiers.
+
+There are two types of relations: [_element relations_](#element-relations) and [_property relations_](#property-relations).
 
 ## [Chaining](/docs/ref/grammar#specifier)
 
@@ -21,13 +23,11 @@ For example, a specifier referring to the `id` property of a root item is a chai
 
 ## Element relations
 
-Items are often organized into a hierarchical tree structure through _element relations_. An item is an _element_ of another when it is hierarchically subordinate to it in such a structure.
-
-An element relation exists based on an element type, an indexing form, and zero to two _identifying items_ (depending on the indexing form).
+_Element relations_ are one-to-many relations keyed by type. Elements can be specified via an _indexing form_, and possibly one or two additional _identifying items_.
 
 ### [Element specifiers](/docs/ref/grammar#specifier)
 
-An _element specifier_ describes an element relation. The syntax varies by indexing form, but always includes a [type term](/docs/ref/terms#term-roles). Reciprocally, the syntactic form used determines the specifier's indexing form.
+An _element specifier_ describes an element relation. The syntax varies by indexing form, but always includes a [type term](/docs/ref/terms#term-roles).
 
 ## Indexing forms
 
@@ -130,8 +130,7 @@ All form specifies every element in a container.
 
 ```
 every window
-all windows
-windows
+all window
 ```
 
 ### [Range](/docs/ref/grammar#specifier)
@@ -142,7 +141,7 @@ Range form specifies elements within a range of values in a container. The test 
 
 ```
 paragraph 1 thru 2
-windows 2 through -1
+window 2 through -1
 ```
 
 ### [Filter](/docs/ref/grammar#specifier)
@@ -160,7 +159,7 @@ The test expression should usually consist of binary comparison or logical [oper
 Syntactically unrooted specifiers in the test expression are implicitly rooted in the test specimen item. Such specifiers are called _specimen specifiers_, and are reevaluated for each item tested.
 
 ```
-windows where name contains "Google"
+window where name contains "Google"
 ```
 
 `name` in this context is a specimen specifier.
@@ -180,7 +179,7 @@ current tab
 
 ## Evaluation
 
-_Evaluating_ a specifier follows its chain of relational queries to arrive at a value or storage location.
+_Evaluating_ a specifier follows its query chain to arrive at a value (or storage location for `set`).
 
 ### Implicit evaluation
 
@@ -191,7 +190,7 @@ The following are all the contexts where specifiers are _not_ implicitly evaluat
 - The argument of a reference expression (see below); e.g., `ref window 1`.
 - The target expression of a `tell` expression; e.g., `tell window 1`.
 - Key expressions in a record; e.g., `{name: "abc"}`.
-- The destination expression of a `set` expression; e.g., `set URL to "https://google.com/"`.
+- The destination of a `set` expression; e.g., `set URL to "https://google.com/"`.
 - The parent expression of a specifier phrase; e.g., `name of window 1` (the final specifier will be evaluated, but `window 1` will not).
 - Filter test expressions; e.g., `window where name is "Untitled"` (the final specifier will be evaluated, but `name` will not).
 

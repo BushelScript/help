@@ -3,7 +3,7 @@ title: Shells and interpreters
 sidebar_label: Shells and interpreters
 ---
 
-## [Weave expressions](/docs/ref/grammar#literals)
+## [Weave expressions](/docs/ref/grammar#literal)
 
 A _weave expression_ embeds a foreign script within a BushelScript program. When a weave is evaluated, its _body_ is evaluated by the shell or other interpreter specified in its [_hashbang (`#!`) line_](https://en.wikipedia.org/wiki/Shebang_(Unix)).
 

@@ -34,4 +34,4 @@ BushelScript is a macOS scripting language designed with the following principal
 
 ## Versions and variants
 
-This tutorial uses version **0.4** of the "BushelScript English"/`bushelscript_en` language.
+This tutorial uses version **0.6** of the "BushelScript English"/`bushelscript_en` language.

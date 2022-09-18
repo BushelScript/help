@@ -30,7 +30,7 @@ BushelScript is a macOS scripting language designed with the following principal
 
 ## Versions and variants
 
-This reference describes version **0.4** of the BushelScript software package. Syntax specifications and examples refer to the "BushelScript English"/`bushelscript_en` language module.
+This reference describes version **0.6** of BushelScript. Syntax specifications and examples refer to the "BushelScript English"/`bushelscript_en` language module.
 
 ## Language grammar
 

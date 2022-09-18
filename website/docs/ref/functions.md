@@ -1,5 +1,5 @@
 ---
-title: "5-1: Functions"
+title: "4-1: Functions"
 sidebar_label: "Part 1: Functions"
 ---
 
@@ -13,17 +13,17 @@ See also: [Quick Tutorial](/docs/tutorial/functions).
 
 A named function definition consists of:
 
-- (One of the keywords `on` or `to`)
+- One of the keywords `on` or `to`
 - A name, which gets defined as a command term in the current dictionary if such a term isn't already there
-- A list of parameter definitions (one per line), which each consist of:
+- A list of parameter definitions, one per line, which each consist of:
   - A name, which gets defined as a parameter term in the command's dictionary if such a term isn't already there
-  - An optional [URI](/docs/ref/terms#semantic-uris) for the parameter term (or one of the keywords `direct` or `target`); if absent, defaults to a URI derived from the parameter name
+  - An optional bracketed [URI](/docs/ref/terms#semantic-uris) for the parameter term, or one of the keywords `direct` or `target`; if absent, defaults to a URI derived from the parameter name
       - This can be used to define direct and target parameters, or to provide synonym parameter names
   - An optional variable name to refer to the parameter's value in the function body; if absent, defaults to the parameter's name
   - A `type`, used by local function selection to determine which function to call given a set of arguments
-- (The keyword `do` to end the parameter list, followed by a line break)
+- The keyword `do` to end the parameter list, followed by a line break
 - A sequence of expressions in the function body, which may use any command, parameter and variable terms just defined
-- (The keyword `end` to end the function body)
+- The keyword `end` to end the function body
   
 e.g.,
 
@@ -48,14 +48,14 @@ tell that to add "tail" times 5
 An anonymous function definition consists of:
 
 - Optionally:
-    - (The keyword `take`)
-    - A (comma-separated) list of variable names to bind to ordered parameters (i.e., the items of the direct parameter as a decomposed sequence)
-- (The keyword `do`)
+    - The keyword `take`
+    - A comma-separated list of variable names to bind ordered parameters to
+- The keyword `do`
 - One of:
     - Sequence body:
-        - (A line break)
+        - A line break
         - A sequence of expressions in the function body, which may use any variable terms just defined
-        - (The keyword `end`)
+        - The keyword `end`
     - Non-sequence body:
         - A single expression for the function body, which may use any variable terms just defined
 

@@ -1,5 +1,5 @@
 ---
-title: "5-2: Control Flow"
+title: "4-2: Control Flow"
 sidebar_label: "Step 2: Control Flow"
 ---
 
@@ -35,4 +35,3 @@ tell 9
   sqrt
 end
 ```
-

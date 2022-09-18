@@ -1,5 +1,5 @@
 ---
-title: "5-1: Functions"
+title: "4-1: Functions"
 sidebar_label: "Step 1: Functions"
 ---
 
